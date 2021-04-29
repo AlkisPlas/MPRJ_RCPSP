@@ -1,4 +1,4 @@
-import rcpsp_cont as rcpsp
+import rcpsp_con as rcpsp
 import pyomo.environ as pyo
 import pyomo.dataportal as dp
 
