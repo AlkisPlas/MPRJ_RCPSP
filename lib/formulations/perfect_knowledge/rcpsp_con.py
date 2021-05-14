@@ -46,7 +46,3 @@ def finish_time_objective(m):
 
 #Minimize finish time of the last activity
 model.OBJ = Objective(rule=finish_time_objective)
-
-#Period Set
-#model.period_set = RangeSet(10)
-#model.x_jt = Var(model.act_set, model.period_set, within=Binary)

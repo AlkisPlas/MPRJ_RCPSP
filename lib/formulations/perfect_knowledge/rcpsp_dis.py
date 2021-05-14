@@ -10,7 +10,7 @@ model.act_set = RangeSet(0, model.act_count + 1)
 model.act_pre = Param(model.act_set, mutable=True, domain=Any)
 
 #Activity processing times
-model.act_proc = Param(model.act_set, within=NonNegativeReals)
+model.act_proc = Param(model.act_set, within=NonNegativeIntegers)
 
 #Resource set
 model.r_count = Param(within=NonNegativeIntegers, domain=Any)
@@ -20,7 +20,7 @@ model.r_set = RangeSet(model.r_count)
 model.r_cap = Param(model.r_set)
 
 #Resource consumption of activities
-model.r_cons = Param(model.act_set, model.r_set, within=NonNegativeReals)
+model.r_cons = Param(model.act_set, model.r_set, within=NonNegativeIntegers)
 
 #Period Set
 model.upper_bound = Param(within=NonNegativeIntegers)
@@ -33,7 +33,7 @@ model.lst = Param(model.act_set, within=NonNegativeIntegers, initialize=model.up
 #Decision variables. If activity j starts at period t
 model.x_jt = Var(model.act_set, model.period_set, within=Binary, initialize=False)
 
-#Resource capacity constraint for resource k
+#Resource capacity constraint for resource k at time t
 def resource_capacity_constraint(m, k, t):
     
     return sum(
@@ -59,6 +59,7 @@ def activity_precedence_constraint(m, n, pre_n):
 
 model.precedence_constraint = Constraint(model.act_set, model.act_set, rule=activity_precedence_constraint)
 
+#Non preemption constraint for activity n
 def no_preemption_constraint(m, n):
     return sum(m.x_jt[n, t] for t in range(m.est[n], m.lst[n])) == 1
 
