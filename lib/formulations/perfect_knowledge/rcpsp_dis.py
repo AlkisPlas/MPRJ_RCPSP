@@ -40,7 +40,7 @@ def resource_capacity_constraint(m, k, t):
         m.r_cons[act, k] * m.x_jt[act, q]
         for act in m.act_set
         for q in range(
-            t, min(value(m.upper_bound) + 1, t + value(m.act_proc[act]) - 0)
+            max(0, t - value(m.act_proc[act]) + 1), t + 1
         )
     ) <= m.r_cap[k]
     
