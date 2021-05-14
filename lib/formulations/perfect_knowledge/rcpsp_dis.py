@@ -53,7 +53,7 @@ def activity_precedence_constraint(m, n, pre_n):
 
     if pre_n in value(m.act_pre[n]):
         return sum(t * m.x_jt[pre_n, t] for t in range(m.est[pre_n], m.lst[pre_n])) \
-            <= sum(t * m.x_jt[n, t] for t in range(m.est[n], m.lst[n])) - m.act_proc[n]
+            <= sum(t * m.x_jt[n, t] for t in range(m.est[n], m.lst[n])) - m.act_proc[pre_n]
 
     return Constraint.Skip
 
