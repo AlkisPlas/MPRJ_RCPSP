@@ -17,23 +17,28 @@ for r in range(1, data['r_count'] + 1):
     data['r_cons'][source, r] = 0
     data['r_cons'][sink, r] = 0
 
-#Calculate latest starting time.
+#Calculate earliest starting times
+est = {}
+for act in range(sink + 1):
+    est[act] = max((est[pre] + data['act_proc'][pre] for pre in data['act_pre'][act]), default=0)
+data['est'] = est
+
+#Calculate latest starting times
 upper_bound = sum(data['act_proc'].values())
 data['upper_bound'] = {None : upper_bound}
 
-lt = {}
-lt[sink] = upper_bound
+lst = {}
+lst[sink] = upper_bound
 visited = []
 def get_latest_starting_time(act):
     for pre in data['act_pre'][act]:
         if pre not in visited:
             visited.append(pre)
-            lt[pre] = lt[act] - data['act_proc'][pre]
+            lst[pre] = lst[act] - data['act_proc'][pre]
             get_latest_starting_time(pre)
-            
-            
+                
 get_latest_starting_time(sink)
-data['lst'] = lt
+data['lst'] = lst
 
 #Solve instance and print results
 instance = rcpsp.model.create_instance(data)
@@ -41,7 +46,6 @@ instance.pprint()
 
 opt = pyo.SolverFactory('cplex')
 opt.options['threads'] = 1
-
 results = opt.solve(instance, load_solutions=True)
 #results.write(filename='results/results_dis_' + datetime.now().strftime("%d_%m_%Y_%H_%M_%S") + '.json', format='json')
 

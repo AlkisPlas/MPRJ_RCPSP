@@ -27,7 +27,7 @@ model.upper_bound = Param(within=NonNegativeIntegers)
 model.period_set = RangeSet(0, model.upper_bound)
 
 #Activity time windows
-model.est = Param(model.act_set, within=NonNegativeIntegers, initialize=0)
+model.est = Param(model.act_set, within=NonNegativeIntegers)
 model.lst = Param(model.act_set, within=NonNegativeIntegers)
 
 #Decision variables. If activity j starts at period t
