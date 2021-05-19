@@ -28,21 +28,21 @@ model.period_set = RangeSet(0, model.upper_bound)
 
 #Activity time windows
 model.est = Param(model.act_set, within=NonNegativeIntegers, initialize=0)
-model.lst = Param(model.act_set, within=NonNegativeIntegers, initialize=model.upper_bound)
+model.lst = Param(model.act_set, within=NonNegativeIntegers)
 
 #Decision variables. If activity j starts at period t
 model.x_jt = Var(model.act_set, model.period_set, within=Binary, initialize=False)
 
-#Resource capacity constraint for resource k at time t
-def resource_capacity_constraint(m, k, t):
+#Resource capacity constraint for resource r at time t
+def resource_capacity_constraint(m, r, t):
     
     return sum(
-        m.r_cons[act, k] * m.x_jt[act, q]
+        m.r_cons[act, r] * m.x_jt[act, q]
         for act in m.act_set
         for q in range(
             max(0, t - value(m.act_proc[act]) + 1), t + 1
         )
-    ) <= m.r_cap[k]
+    ) <= m.r_cap[r]
     
 model.resource_constraint = Constraint(model.r_set, model.period_set, rule=resource_capacity_constraint)
 

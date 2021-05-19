@@ -6,20 +6,38 @@ from datetime import datetime
 data = dp.DataPortal()
 data.load(filename='data/test_data/rcpsp_con_test_data.json')
 
-#model preprocessing
-data['upper_bound'] = {None : sum(data['act_proc'].values())}
+#Initialize dummy source and sink activities
+source = 0
+sink = data['act_count'] + 1
 
-#initialize dummy activities
-act_count = data['act_count']
-data['act_proc'][0] = 0
-data['act_proc'][act_count + 1] = 0
+data['act_proc'][source] = 0
+data['act_proc'][sink] = 0
 
 for r in range(1, data['r_count'] + 1):
-    data['r_cons'][0, r] = 0
-    data['r_cons'][act_count + 1, r] = 0
+    data['r_cons'][source, r] = 0
+    data['r_cons'][sink, r] = 0
 
+#Calculate latest starting time.
+upper_bound = sum(data['act_proc'].values())
+data['upper_bound'] = {None : upper_bound}
+
+lt = {}
+lt[sink] = upper_bound
+visited = []
+def get_latest_starting_time(act):
+    for pre in data['act_pre'][act]:
+        if pre not in visited:
+            visited.append(pre)
+            lt[pre] = lt[act] - data['act_proc'][pre]
+            get_latest_starting_time(pre)
+            
+            
+get_latest_starting_time(sink)
+data['lst'] = lt
+
+#Solve instance and print results
 instance = rcpsp.model.create_instance(data)
-#instance.pprint()
+instance.pprint()
 
 opt = pyo.SolverFactory('cplex')
 opt.options['threads'] = 1

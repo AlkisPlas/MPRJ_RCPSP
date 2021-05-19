@@ -23,9 +23,9 @@ model.r_cons = Param(model.act_set, model.r_set, within=NonNegativeReals, mutabl
 model.act_proc = Param(model.act_set, within=NonNegativeReals)
 model.act_fin = Var(model.act_set, within=NonNegativeReals, initialize=0.0)
 
-#Resource capacity constraint for resource k
-def resource_capacity_constraint(m, k):
-    return sum(m.r_cons[act, k] for act in m.act_set) <= m.r_cap[k]
+#Resource capacity constraint for resource r
+def resource_capacity_constraint(m, r):
+    return sum(m.r_cons[act, r] for act in m.act_set) <= m.r_cap[r]
 
 model.resource_constraint = Constraint(model.r_set, rule=resource_capacity_constraint)
 
