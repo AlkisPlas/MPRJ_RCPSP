@@ -4,7 +4,7 @@ import pyomo.dataportal as dp
 from datetime import datetime
 
 data = dp.DataPortal()
-data.load(filename='data/test_data/rcpsp_con_test_data.json')
+data.load(filename='data/test_data/rcpsp_test_instance_2.json')
 
 #Initialize dummy source and sink activities
 source = 0
@@ -42,7 +42,7 @@ data['lst'] = lst
 
 #Solve instance and print results
 instance = rcpsp.model.create_instance(data)
-instance.pprint()
+#instance.pprint()
 
 opt = pyo.SolverFactory('cplex')
 opt.options['threads'] = 1
