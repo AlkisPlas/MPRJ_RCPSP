@@ -52,4 +52,5 @@ results = opt.solve(instance, load_solutions=True)
 print(results.solver)
 for v in instance.component_data_objects(pyo.Var):
     if int(v.value) == 1:
-        print (str(v), int(v.value))
+        act = str(v).split('[')[1].split(',')
+        print ('Activity {act} starts at {start}'.format(act = act[0], start = act[1].split(']')[0]))
