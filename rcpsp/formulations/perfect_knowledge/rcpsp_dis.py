@@ -35,11 +35,11 @@ model.est = Param(model.act_set, within=NonNegativeIntegers)
 model.lst = Param(model.act_set, within=NonNegativeIntegers)
 
 #Decision variables. If activity j starts at period t
+#TODO - for each activity only generate variables between est and lst
 model.x_jt = Var(model.act_set, model.period_set, within=Binary, initialize=False)
 
 #Resource capacity constraint for resource r at time t
 def resource_capacity_constraint(m, r, t):
-    
     return sum(
         m.r_cons[act, r] * m.x_jt[act, q]
         for act in m.act_set
