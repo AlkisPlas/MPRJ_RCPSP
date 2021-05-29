@@ -2,10 +2,12 @@ import rcpsp_dis as rcpsp
 import pyomo.environ as pyo
 import pyomo.dataportal as dp
 from datetime import datetime
+import sys
 
 data = dp.DataPortal()
-instance_dir = 'data/instances/json/j60/'
-instance_name = 'j602_9'
+
+instance_dir = 'data/instances/json/' + sys.argv[1] + '/'
+instance_name = sys.argv[2]
 data.load(filename=instance_dir + instance_name + '.json')
 
 #Initialize dummy source and sink activities
