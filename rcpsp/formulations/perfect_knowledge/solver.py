@@ -46,18 +46,26 @@ def get_latest_starting_time(act):
 get_latest_starting_time(sink)
 data['lst'] = lst
 
-# Solve instance and print results
-instance = rcpsp.model.create_instance(data)
-# instance.pprint()
+# Initialize variable sparse index set 
+x_set_init = []
+for act in range(sink + 1):
+    for t in range(data['est'][act], data['lst'][act] + 1):
+        x_set_init.append((act, t))
+data["x_set_init"] = x_set_init
 
+instance = rcpsp.model.create_instance(data)
+#instance.pprint()
+
+# Solve instance and print results
 opt = pyo.SolverFactory('cplex')
 opt.options['threads'] = 1
 results = opt.solve(instance, load_solutions=True)
+
 results.write(filename='data/results/{instance_name}_results_dis_{timestamp}.json'
               .format(instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
 
 print(results.solver)
 for v in instance.component_data_objects(pyo.Var):
-    if int(v.value) == 1:
+    if v.value is not None and int(v.value) == 1:
         act = str(v).split('[')[1].split(',')
         print('Activity {act} starts at {start}'.format(act=act[0], start=act[1].split(']')[0]))
