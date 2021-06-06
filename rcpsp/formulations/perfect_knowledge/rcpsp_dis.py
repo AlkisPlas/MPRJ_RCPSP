@@ -38,11 +38,11 @@ model.lst = Param(model.act_set, within=NonNegativeIntegers)
 model.x_set_init = Set(dimen=2)
 model.x_jt = Var(model.x_set_init, within=Binary, initialize=False, dense=False)
 
-
 # Resource capacity constraint for resource r at time t
 def resource_capacity_constraint(m, r, t):
 
     for act in m.act_set:
+        #TODO upper bound must be m.lft[est]. Requires redefinition of vars 
         if t < m.est[act] or t > m.lst[act]:
             return Constraint.Skip
 
