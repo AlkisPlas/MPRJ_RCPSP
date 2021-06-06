@@ -1,10 +1,10 @@
 #!/bin/bash
 
-SCRIPTDIR=$(dirname "$0")
-INSTANCEBASE=${SCRIPTDIR}/../../../data/instances
+scriptdir=$(dirname "$0")
+instancebase=${scriptdir}/../../../data/instances
 
-for INDIR in ${INSTANCEBASE}/sm/*; do
-    for INFILE in ${INDIR}/*.sm; do
-        python3 ${SCRIPTDIR}/psplibconverter.py ${INFILE}
+for indir in ${instancebase}/sm/*; do
+    for infile in ${indir}/*.sm; do
+        python3 ${scriptdir}/psplibconverter.py ${infile}
     done
 done
