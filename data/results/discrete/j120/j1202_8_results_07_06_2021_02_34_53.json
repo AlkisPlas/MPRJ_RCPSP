@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 77.0,
+            "Name": "tmp_4wda2tq",
+            "Number of constraints": 2230,
+            "Number of nonzeros": 569547,
+            "Number of objectives": 1,
+            "Number of variables": 68616,
+            "Sense": "minimize",
+            "Upper bound": 77.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.7000000000e+01",
+            "Time": 5.051777124404907,
+            "User time": 4.61
+        }
+    ]
+}

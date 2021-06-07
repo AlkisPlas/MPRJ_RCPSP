@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 76.0,
+            "Name": "tmp_qmdbrxb",
+            "Number of constraints": 951,
+            "Number of nonzeros": 201218,
+            "Number of objectives": 1,
+            "Number of variables": 16633,
+            "Sense": "minimize",
+            "Upper bound": 76.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.6000000000e+01",
+            "Time": 2.4691689014434814,
+            "User time": 2.32
+        }
+    ]
+}

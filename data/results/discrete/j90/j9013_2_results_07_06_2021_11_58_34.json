@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 77.0,
+            "Name": "tmpy7n2qo9x",
+            "Number of constraints": 1819,
+            "Number of nonzeros": 1005301,
+            "Number of objectives": 1,
+            "Number of variables": 43328,
+            "Sense": "minimize",
+            "Upper bound": 77.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.7000000000e+01",
+            "Time": 8.693976879119873,
+            "User time": 8.12
+        }
+    ]
+}

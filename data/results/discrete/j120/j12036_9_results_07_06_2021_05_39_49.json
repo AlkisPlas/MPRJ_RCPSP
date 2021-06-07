@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 104.0,
+            "Name": "tmptmqlv4rv",
+            "Number of constraints": 2127,
+            "Number of nonzeros": 1396925,
+            "Number of objectives": 1,
+            "Number of variables": 66384,
+            "Sense": "minimize",
+            "Upper bound": 104.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.0400000000e+02",
+            "Time": 13.015083074569702,
+            "User time": 12.3
+        }
+    ]
+}

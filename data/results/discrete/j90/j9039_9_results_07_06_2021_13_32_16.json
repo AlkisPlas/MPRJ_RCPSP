@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 79.0,
+            "Name": "tmpyc2alpd9",
+            "Number of constraints": 1755,
+            "Number of nonzeros": 565789,
+            "Number of objectives": 1,
+            "Number of variables": 40723,
+            "Sense": "minimize",
+            "Upper bound": 79.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.9000000000e+01",
+            "Time": 6.014325857162476,
+            "User time": 5.59
+        }
+    ]
+}

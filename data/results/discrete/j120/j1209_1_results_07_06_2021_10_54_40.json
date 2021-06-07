@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 88.0,
+            "Name": "tmp1ho1psvs",
+            "Number of constraints": 2370,
+            "Number of nonzeros": 977534,
+            "Number of objectives": 1,
+            "Number of variables": 73934,
+            "Sense": "minimize",
+            "Upper bound": 88.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.8000000000e+01",
+            "Time": 9.326359033584595,
+            "User time": 8.6
+        }
+    ]
+}

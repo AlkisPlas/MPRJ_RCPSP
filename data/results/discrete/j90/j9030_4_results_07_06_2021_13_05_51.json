@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 104.0,
+            "Name": "tmpah_m5_rd",
+            "Number of constraints": 1719,
+            "Number of nonzeros": 949423,
+            "Number of objectives": 1,
+            "Number of variables": 42032,
+            "Sense": "minimize",
+            "Upper bound": 104.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.0400000000e+02",
+            "Time": 8.451687335968018,
+            "User time": 7.9
+        }
+    ]
+}

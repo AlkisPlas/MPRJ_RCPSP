@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 76.0,
+            "Name": "tmpid2c6sna",
+            "Number of constraints": 2434,
+            "Number of nonzeros": 1015118,
+            "Number of objectives": 1,
+            "Number of variables": 75581,
+            "Sense": "minimize",
+            "Upper bound": 76.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.6000000000e+01",
+            "Time": 10.221679925918579,
+            "User time": 9.51
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 60.0,
+            "Name": "tmpeiwsp_13",
+            "Number of constraints": 1036,
+            "Number of nonzeros": 143753,
+            "Number of objectives": 1,
+            "Number of variables": 17694,
+            "Sense": "minimize",
+            "Upper bound": 60.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 6.0000000000e+01",
+            "Time": 1.7475860118865967,
+            "User time": 1.6
+        }
+    ]
+}

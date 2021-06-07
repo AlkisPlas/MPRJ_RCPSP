@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 62.0,
+            "Name": "tmpo0a_pqnf",
+            "Number of constraints": 397,
+            "Number of nonzeros": 52047,
+            "Number of objectives": 1,
+            "Number of variables": 4470,
+            "Sense": "minimize",
+            "Upper bound": 62.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 6.2000000000e+01",
+            "Time": 0.7476310729980469,
+            "User time": 0.69
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 62.0,
+            "Name": "tmpp27_x_lq",
+            "Number of constraints": 1627,
+            "Number of nonzeros": 469776,
+            "Number of objectives": 1,
+            "Number of variables": 38330,
+            "Sense": "minimize",
+            "Upper bound": 62.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 6.2000000000e+01",
+            "Time": 4.746018171310425,
+            "User time": 4.33
+        }
+    ]
+}

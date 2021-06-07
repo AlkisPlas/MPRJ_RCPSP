@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 114.0,
+            "Name": "tmpwgms6_xn",
+            "Number of constraints": 1447,
+            "Number of nonzeros": 295675,
+            "Number of objectives": 1,
+            "Number of variables": 38023,
+            "Sense": "minimize",
+            "Upper bound": 114.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.1400000000e+02",
+            "Time": 4.247009038925171,
+            "User time": 3.98
+        }
+    ]
+}

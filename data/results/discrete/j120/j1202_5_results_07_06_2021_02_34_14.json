@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 91.0,
+            "Name": "tmpnt7z265i",
+            "Number of constraints": 2494,
+            "Number of nonzeros": 690921,
+            "Number of objectives": 1,
+            "Number of variables": 77488,
+            "Sense": "minimize",
+            "Upper bound": 91.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 9.1000000000e+01",
+            "Time": 6.261538028717041,
+            "User time": 5.75
+        }
+    ]
+}

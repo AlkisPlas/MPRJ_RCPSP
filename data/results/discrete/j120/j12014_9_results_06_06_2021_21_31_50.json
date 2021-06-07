@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 101.0,
+            "Name": "tmpxp0ar1iu",
+            "Number of constraints": 2326,
+            "Number of nonzeros": 1269105,
+            "Number of objectives": 1,
+            "Number of variables": 72075,
+            "Sense": "minimize",
+            "Upper bound": 101.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.0100000000e+02",
+            "Time": 13.014753103256226,
+            "User time": 12.07
+        }
+    ]
+}

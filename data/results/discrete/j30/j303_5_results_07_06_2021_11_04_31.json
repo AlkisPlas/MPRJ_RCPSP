@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 46.0,
+            "Name": "tmpvvvsx96c",
+            "Number of constraints": 493,
+            "Number of nonzeros": 37126,
+            "Number of objectives": 1,
+            "Number of variables": 4670,
+            "Sense": "minimize",
+            "Upper bound": 46.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 4.6000000000e+01",
+            "Time": 0.4307219982147217,
+            "User time": 0.38
+        }
+    ]
+}

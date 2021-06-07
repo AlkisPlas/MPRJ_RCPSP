@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 119.0,
+            "Name": "tmprwg5242q",
+            "Number of constraints": 2420,
+            "Number of nonzeros": 742320,
+            "Number of objectives": 1,
+            "Number of variables": 74853,
+            "Sense": "minimize",
+            "Upper bound": 119.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.1900000000e+02",
+            "Time": 8.33135175704956,
+            "User time": 7.79
+        }
+    ]
+}

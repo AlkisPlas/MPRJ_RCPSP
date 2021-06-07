@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 35.998706897,
+            "Name": "tmptcahz2hc",
+            "Number of constraints": 3015,
+            "Number of nonzeros": 12105,
+            "Number of objectives": 1,
+            "Number of variables": 1747,
+            "Sense": "minimize",
+            "Upper bound": 35.99999999999999
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 2968,
+                    "Number of created subproblems": 2968
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal, tolerance (0.0001/1e-06)\\x3a Objective = 3.6000000000e+01",
+            "Time": 6.519627094268799,
+            "User time": 6.48
+        }
+    ]
+}

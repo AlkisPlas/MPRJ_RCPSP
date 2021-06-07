@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 114.0,
+            "Name": "tmpzow521r0",
+            "Number of constraints": 2468,
+            "Number of nonzeros": 752267,
+            "Number of objectives": 1,
+            "Number of variables": 74918,
+            "Sense": "minimize",
+            "Upper bound": 114.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.1400000000e+02",
+            "Time": 7.210731744766235,
+            "User time": 6.67
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 90.0,
+            "Name": "tmpsix2exss",
+            "Number of constraints": 2290,
+            "Number of nonzeros": 1230403,
+            "Number of objectives": 1,
+            "Number of variables": 70641,
+            "Sense": "minimize",
+            "Upper bound": 90.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 9.0000000000e+01",
+            "Time": 14.228737115859985,
+            "User time": 13.39
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 126.0,
+            "Name": "tmpgekot1k8",
+            "Number of constraints": 2206,
+            "Number of nonzeros": 1252591,
+            "Number of objectives": 1,
+            "Number of variables": 74223,
+            "Sense": "minimize",
+            "Upper bound": 126.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.2600000000e+02",
+            "Time": 10.488586902618408,
+            "User time": 9.72
+        }
+    ]
+}

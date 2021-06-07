@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 109.0,
+            "Name": "tmphhogsaer",
+            "Number of constraints": 2434,
+            "Number of nonzeros": 1424995,
+            "Number of objectives": 1,
+            "Number of variables": 77570,
+            "Sense": "minimize",
+            "Upper bound": 109.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.0900000000e+02",
+            "Time": 13.158474922180176,
+            "User time": 12.3
+        }
+    ]
+}

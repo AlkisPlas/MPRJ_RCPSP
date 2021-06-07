@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 103.0,
+            "Name": "tmpg3w2y_ml",
+            "Number of constraints": 2479,
+            "Number of nonzeros": 718922,
+            "Number of objectives": 1,
+            "Number of variables": 76227,
+            "Sense": "minimize",
+            "Upper bound": 103.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.0300000000e+02",
+            "Time": 7.478302955627441,
+            "User time": 6.94
+        }
+    ]
+}

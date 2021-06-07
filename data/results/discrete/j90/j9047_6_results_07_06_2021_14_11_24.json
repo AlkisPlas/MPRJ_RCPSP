@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 98.0,
+            "Name": "tmpoiz_hjke",
+            "Number of constraints": 1695,
+            "Number of nonzeros": 922979,
+            "Number of objectives": 1,
+            "Number of variables": 40709,
+            "Sense": "minimize",
+            "Upper bound": 98.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 9.8000000000e+01",
+            "Time": 11.003205060958862,
+            "User time": 10.31
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 81.0,
+            "Name": "tmpwrona_89",
+            "Number of constraints": 978,
+            "Number of nonzeros": 275076,
+            "Number of objectives": 1,
+            "Number of variables": 16509,
+            "Sense": "minimize",
+            "Upper bound": 81.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.1000000000e+01",
+            "Time": 4.103010177612305,
+            "User time": 3.91
+        }
+    ]
+}

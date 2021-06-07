@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 76.0,
+            "Name": "tmppzzo8gr2",
+            "Number of constraints": 1051,
+            "Number of nonzeros": 373666,
+            "Number of objectives": 1,
+            "Number of variables": 17595,
+            "Sense": "minimize",
+            "Upper bound": 76.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.6000000000e+01",
+            "Time": 3.257646083831787,
+            "User time": 2.99
+        }
+    ]
+}

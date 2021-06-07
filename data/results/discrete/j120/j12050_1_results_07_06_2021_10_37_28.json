@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 116.0,
+            "Name": "tmptygszepq",
+            "Number of constraints": 2324,
+            "Number of nonzeros": 1021340,
+            "Number of objectives": 1,
+            "Number of variables": 71891,
+            "Sense": "minimize",
+            "Upper bound": 116.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 1.1600000000e+02",
+            "Time": 11.338078022003174,
+            "User time": 10.65
+        }
+    ]
+}

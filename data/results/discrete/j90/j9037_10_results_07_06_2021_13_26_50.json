@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 89.0,
+            "Name": "tmpq19ufmvq",
+            "Number of constraints": 1899,
+            "Number of nonzeros": 667615,
+            "Number of objectives": 1,
+            "Number of variables": 43665,
+            "Sense": "minimize",
+            "Upper bound": 89.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.9000000000e+01",
+            "Time": 6.593631982803345,
+            "User time": 6.16
+        }
+    ]
+}

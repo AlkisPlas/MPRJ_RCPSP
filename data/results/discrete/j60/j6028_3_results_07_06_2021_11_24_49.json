@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 72.0,
+            "Name": "tmpz6pc12tt",
+            "Number of constraints": 955,
+            "Number of nonzeros": 255687,
+            "Number of objectives": 1,
+            "Number of variables": 16299,
+            "Sense": "minimize",
+            "Upper bound": 72.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.2000000000e+01",
+            "Time": 3.982283115386963,
+            "User time": 3.8
+        }
+    ]
+}

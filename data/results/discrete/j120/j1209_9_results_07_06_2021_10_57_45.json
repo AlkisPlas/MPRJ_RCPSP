@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 87.0,
+            "Name": "tmpcm56osl6",
+            "Number of constraints": 2214,
+            "Number of nonzeros": 875571,
+            "Number of objectives": 1,
+            "Number of variables": 68475,
+            "Sense": "minimize",
+            "Upper bound": 87.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.7000000000e+01",
+            "Time": 8.501281023025513,
+            "User time": 7.87
+        }
+    ]
+}

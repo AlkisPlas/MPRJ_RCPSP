@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 66.0,
+            "Name": "tmpik_9vce_",
+            "Number of constraints": 433,
+            "Number of nonzeros": 39425,
+            "Number of objectives": 1,
+            "Number of variables": 4597,
+            "Sense": "minimize",
+            "Upper bound": 66.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 6.6000000000e+01",
+            "Time": 0.6168467998504639,
+            "User time": 0.56
+        }
+    ]
+}
