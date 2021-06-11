@@ -1,5 +1,6 @@
 import sys
 from datetime import datetime
+from pyomo.core.base.component import CloneError
 import pyomo.dataportal as dp
 import pyomo.environ as pyo
 import rcpsp_con as rcpsp
@@ -8,6 +9,11 @@ data = dp.DataPortal()
 
 instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=sys.argv[1])
 instance_name = sys.argv[2]
+
+#instance_dir = 'data/test_data/'
+#instance_name = 'rcpsp_test_instance_2'
+
+print('\nSolving instance:' + instance_name)
 
 data.load(filename=instance_dir + instance_name + '.json')
 
@@ -53,39 +59,63 @@ lft = {act : val + data['act_proc'][act] for act, val in lst.items()}
 data['lst'] = lst
 data['lft'] = lft
 
+
+# Get transitive closure of graph
+# TODO - merge with the DFS above
+C = set()
+def get_transitive_closure(root, act):
+    for pre in data['act_pre'][act]:
+        if (pre, root) not in C:
+            C.update([(pre, root)])
+            C.update([(root, pre)])
+            get_transitive_closure(root, pre)
+
+for act in range(sink + 1):
+    get_transitive_closure(act, act)
+
+
 # Custom sets
-# Set P - No hard precedence - overlapping activities
-P = set()
-S = set()
-K = set()
+B = set()
+D = set()
+G = set()
 for i in range(1, sink):
     for j in range(1, sink):
-        if i != j and i not in data['act_pre'][j] and j not in data['act_pre'][i]:
-            K.update([(i, j)])
-            in_s = False
-            for k in range(1, data['r_count'] + 1):
-                if data['r_cons'][i, k] + data['r_cons'][j, k] > data['r_cap'][k]:
-                    S.update([(i, j)])
-                    in_s = True
-                    break
-            if not in_s:
-                P.update([(i, j)])
+        if i!=j and (data['r_cons'][i, k] > 0 and data['r_cons'][j, k] > 0 for k in range(1, data['r_count'] + 1)):
+            B.update([(i, j)])
 
-data['P'] = P
-data['S'] = S
+for i, j in B:
+    for k in range(1, data['r_count'] + 1):
+        if data['r_cons'][i, k] + data['r_cons'][j, k] > data['r_cap'][k]:
+            G.update([(i, j)])
+            break
+
+for i, j in C:
+    if (i, j) not in C and lft[i] <= est[j]:
+        D.update([(i, j)])
+
+
+data['B'] = B
+data['C'] = C
+data['G'] = G
+K = C.union(D)
 data['K'] = K
+data['S'] = G.difference(K)
+data['P'] = B.difference(G.union(K))
 
+print('Preprocessing phase complete. Sending to solver...')
 instance = rcpsp.model.create_instance(data)
 #instance.pprint()
 
 # Solve instance and print results
 opt = pyo.SolverFactory('cplex')
-opt.options['threads'] = 1
+opt.options['threads'] = 2
+opt.options['timelimit'] = 600
 results = opt.solve(instance, load_solutions=True)
 
 
-results.write(filename='data/results/continuous/{instance_name}_results_{timestamp}.json'
-              .format(instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
+results.write(filename='data/results/continuous/{instance_dir}/{instance_name}_results_{timestamp}.json'
+              .format(instance_dir=sys.argv[1], instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
 
+print('Done')
 
 #instance.display()

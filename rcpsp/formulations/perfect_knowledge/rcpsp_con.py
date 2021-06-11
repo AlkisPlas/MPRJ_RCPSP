@@ -7,11 +7,11 @@ Time horizon is continuous.
 model = AbstractModel(name="RCPSP_CONTINUOUS")
 
 # Activity set
-model.act_count = Param(within=NonNegativeIntegers, mutable=True)
+model.act_count = Param(within=NonNegativeIntegers)
 model.act_set = RangeSet(0, model.act_count + 1)
 
 # Activity Precedence Set
-model.act_pre = Param(model.act_set, mutable=True, domain=Any)
+model.act_pre = Param(model.act_set, domain=Any)
 
 # Resource set
 model.r_count = Param(within=NonNegativeIntegers, domain=Any)
@@ -34,19 +34,17 @@ model.eft = Param(model.act_set, within=NonNegativeIntegers)
 model.lft = Param(model.act_set, within=NonNegativeIntegers)
 
 # Modelling sets.
- 
-# Activities that can overlap. They share common resources, can be processed in parallel
-# in terms of resource consumption and have no precedence constraints between them
-model.P = Set(dimen=2)
-# Activities that can't overlap due to resource requirements.
-model.S = Set(dimen=2)
-# Activities with hard precedence constraints
+model.B = Set(dimen=2)
+model.C = Set(dimen=2)
+model.G = Set(dimen=2)
 model.K = Set(dimen=2)
+model.S = Set(dimen=2)
+model.P = Set(dimen=2)
 
 # Decision variables.
 # Activity start and finishing times.
-model.start = Var(model.act_set, within=NonNegativeReals)
-model.fin = Var(model.act_set, within=NonNegativeReals)
+model.start = Var(model.act_set, within=NonNegativeIntegers)
+model.fin = Var(model.act_set, within=NonNegativeIntegers)
 
 '''
 Execution sequence variables.
@@ -54,8 +52,8 @@ Execution sequence variables.
 For activities that cannot be executed in parallel x[i,j] = 1 if fin[i] <= start[j], 0 otherwise
 For activities that can be executed in parallel x[i,j] = 1 if start[i] <= fin[j], 0 otherwise
 '''
-model.x_set = (model.act_set * model.act_set) - model.K
-model.x = Var(model.act_set, model.act_set, within=Binary)
+model.x_set = (model.B | model.G) - model.K
+model.x = Var(model.x_set, within=Binary)
 
 '''
 Overlapping activity variables
@@ -77,7 +75,7 @@ model.start_finish_correlation_constraint = Constraint(
 
 # Constraints for activities with known precedence requirements
 def activity_hard_precedence(m, n, pre_n):
-    if pre_n in value(m.act_pre[n]):
+    if pre_n in m.act_pre[n]:
         return m.fin[pre_n] <= m.start[n]
 
     return Constraint.Skip
@@ -93,8 +91,11 @@ because there are not enough resources for them to overlap. If j is scheduled be
 then the constraint is skipped because fin[i] - start[j] <= lft[i] - est[j] always holds
 '''
 def activity_non_overlapping_precedence(m, i, j):
-    return m.fin[i] <= m.start[j] + (m.lft[i] - m.est[j]) * m.x[j, i]
-
+    if i > j:
+        return m.fin[i] <= m.start[j] + (m.lft[i] - m.est[j]) * m.x[j, i]
+    
+    return Constraint.Skip
+    
 model.activity_non_overlapping_precedence_constraint = Constraint(
     model.S, rule=activity_non_overlapping_precedence)
 
@@ -127,8 +128,8 @@ model.activity_overlapping_precedence_constraint_2 = Constraint(
 
 # For activities without hard precedence constraints, avoid execution cycles.
 def no_execution_cycles(m, i, j):
-    if i > j and i not in value(m.act_pre[j]) and j not in value(m.act_pre[i]):
-        return m.x[i, j] + m.x[j, i] <= 1
+    if i > j and (i, j) not in m.K:
+        return m.x[i, j] + m.x[j, i] == 1
 
     return Constraint.Skip
 
@@ -163,8 +164,9 @@ model.tighten_decision_variables_constraint = Constraint(
 
 
 def preprocessing_phase_relaxation(m, i, j):
-    if m.lst[i] <= m.est[j]:
+    if i != j and m.lst[i] <= m.est[j]:
         return m.x[i, j] == 1
+
     return Constraint.Skip
 
 model.preprocessing_phase_relaxation_constraint = Constraint(
