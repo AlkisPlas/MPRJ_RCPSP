@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 83.0,
+            "Name": "tmpporxplka",
+            "Number of constraints": 7092,
+            "Number of nonzeros": 28897,
+            "Number of objectives": 1,
+            "Number of variables": 3925,
+            "Sense": "minimize",
+            "Upper bound": 83.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 6372,
+                    "Number of created subproblems": 6372
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.3000000000e+01",
+            "Time": 35.159743785858154,
+            "User time": 35.09
+        }
+    ]
+}

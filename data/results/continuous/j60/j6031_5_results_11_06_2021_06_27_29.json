@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 72.0,
+            "Name": "tmp8rpw2htl",
+            "Number of constraints": 8935,
+            "Number of nonzeros": 41693,
+            "Number of objectives": 1,
+            "Number of variables": 4989,
+            "Sense": "minimize",
+            "Upper bound": 72.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 201,
+                    "Number of created subproblems": 201
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.2000000000e+01",
+            "Time": 3.239408254623413,
+            "User time": 3.17
+        }
+    ]
+}

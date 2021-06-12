@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 81.0,
+            "Name": "tmpo60twixw",
+            "Number of constraints": 7768,
+            "Number of nonzeros": 27600,
+            "Number of objectives": 1,
+            "Number of variables": 4323,
+            "Sense": "minimize",
+            "Upper bound": 81.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 234,
+                    "Number of created subproblems": 234
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.1000000000e+01",
+            "Time": 2.321604013442993,
+            "User time": 2.25
+        }
+    ]
+}

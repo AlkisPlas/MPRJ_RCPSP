@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 75.0,
+            "Name": "tmpa7uov419",
+            "Number of constraints": 7162,
+            "Number of nonzeros": 33027,
+            "Number of objectives": 1,
+            "Number of variables": 3965,
+            "Sense": "minimize",
+            "Upper bound": 161.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 1.6100000000e+02",
+            "Time": 1417.6081762313843,
+            "User time": 1417.55
+        }
+    ]
+}

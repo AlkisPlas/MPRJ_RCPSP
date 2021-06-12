@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 58.0,
+            "Name": "tmpg795aidt",
+            "Number of constraints": 2204,
+            "Number of nonzeros": 9851,
+            "Number of objectives": 1,
+            "Number of variables": 1205,
+            "Sense": "minimize",
+            "Upper bound": 58.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 9135,
+                    "Number of created subproblems": 9135
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.8000000000e+01",
+            "Time": 19.796183586120605,
+            "User time": 19.77
+        }
+    ]
+}

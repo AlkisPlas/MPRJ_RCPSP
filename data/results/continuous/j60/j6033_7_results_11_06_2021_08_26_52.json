@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 69.0,
+            "Name": "tmpqavmd_ip",
+            "Number of constraints": 7037,
+            "Number of nonzeros": 21001,
+            "Number of objectives": 1,
+            "Number of variables": 3969,
+            "Sense": "minimize",
+            "Upper bound": 69.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 2110,
+                    "Number of created subproblems": 2110
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 6.9000000000e+01",
+            "Time": 294.7201180458069,
+            "User time": 294.66
+        }
+    ]
+}

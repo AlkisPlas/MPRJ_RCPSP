@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 83.0,
+            "Name": "tmpt6x7falc",
+            "Number of constraints": 7428,
+            "Number of nonzeros": 30627,
+            "Number of objectives": 1,
+            "Number of variables": 4117,
+            "Sense": "minimize",
+            "Upper bound": 83.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.3000000000e+01",
+            "Time": 0.19747495651245117,
+            "User time": 0.13
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 80.0,
+            "Name": "tmp25f2_cn9",
+            "Number of constraints": 8319,
+            "Number of nonzeros": 38701,
+            "Number of objectives": 1,
+            "Number of variables": 4637,
+            "Sense": "minimize",
+            "Upper bound": 340.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 3.4000000000e+02",
+            "Time": 1004.3796851634979,
+            "User time": 1004.31
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 68.0,
+            "Name": "tmp4ba5_rus",
+            "Number of constraints": 8501,
+            "Number of nonzeros": 39585,
+            "Number of objectives": 1,
+            "Number of variables": 4741,
+            "Sense": "minimize",
+            "Upper bound": 269.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 2.6900000000e+02",
+            "Time": 1091.2869172096252,
+            "User time": 1091.18
+        }
+    ]
+}

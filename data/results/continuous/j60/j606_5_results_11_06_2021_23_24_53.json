@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 78.0,
+            "Name": "tmphibmencp",
+            "Number of constraints": 9427,
+            "Number of nonzeros": 33881,
+            "Number of objectives": 1,
+            "Number of variables": 5281,
+            "Sense": "minimize",
+            "Upper bound": 82.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 8.2000000000e+01",
+            "Time": 1052.2208440303802,
+            "User time": 1052.08
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 50.0,
+            "Name": "tmpyg21r0gy",
+            "Number of constraints": 2083,
+            "Number of nonzeros": 7102,
+            "Number of objectives": 1,
+            "Number of variables": 1147,
+            "Sense": "minimize",
+            "Upper bound": 50.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 1100,
+                    "Number of created subproblems": 1100
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.0000000000e+01",
+            "Time": 0.8913848400115967,
+            "User time": 0.87
+        }
+    ]
+}

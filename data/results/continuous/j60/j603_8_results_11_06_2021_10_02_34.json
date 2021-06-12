@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 52.0,
+            "Name": "tmpe810h3nd",
+            "Number of constraints": 9756,
+            "Number of nonzeros": 29676,
+            "Number of objectives": 1,
+            "Number of variables": 5487,
+            "Sense": "minimize",
+            "Upper bound": 52.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 4233,
+                    "Number of created subproblems": 4233
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.2000000000e+01",
+            "Time": 8.368199110031128,
+            "User time": 8.29
+        }
+    ]
+}

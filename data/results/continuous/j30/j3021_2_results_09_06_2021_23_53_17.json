@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 44.0,
+            "Name": "tmpe43mxdwa",
+            "Number of constraints": 1460,
+            "Number of nonzeros": 4577,
+            "Number of objectives": 1,
+            "Number of variables": 829,
+            "Sense": "minimize",
+            "Upper bound": 44.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 1745,
+                    "Number of created subproblems": 1745
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 4.4000000000e+01",
+            "Time": 1.3160581588745117,
+            "User time": 1.29
+        }
+    ]
+}

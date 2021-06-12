@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 54.0,
+            "Name": "tmpg4vy8xcg",
+            "Number of constraints": 1829,
+            "Number of nonzeros": 8001,
+            "Number of objectives": 1,
+            "Number of variables": 985,
+            "Sense": "minimize",
+            "Upper bound": 54.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 2870,
+                    "Number of created subproblems": 2870
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.4000000000e+01",
+            "Time": 3.6662819385528564,
+            "User time": 3.64
+        }
+    ]
+}

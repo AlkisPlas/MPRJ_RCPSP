@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 39.0,
+            "Name": "tmp2ot655ac",
+            "Number of constraints": 2435,
+            "Number of nonzeros": 8497,
+            "Number of objectives": 1,
+            "Number of variables": 1337,
+            "Sense": "minimize",
+            "Upper bound": 39.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 3.9000000000e+01",
+            "Time": 0.05660390853881836,
+            "User time": 0.03
+        }
+    ]
+}

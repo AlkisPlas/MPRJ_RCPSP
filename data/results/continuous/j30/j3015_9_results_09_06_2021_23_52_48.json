@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 54.0,
+            "Name": "tmpmu852mr5",
+            "Number of constraints": 2239,
+            "Number of nonzeros": 10021,
+            "Number of objectives": 1,
+            "Number of variables": 1225,
+            "Sense": "minimize",
+            "Upper bound": 54.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 1461,
+                    "Number of created subproblems": 1461
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.4000000000e+01",
+            "Time": 1.4920499324798584,
+            "User time": 1.46
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 67.0,
+            "Name": "tmp9vn_gohn",
+            "Number of constraints": 7956,
+            "Number of nonzeros": 23938,
+            "Number of objectives": 1,
+            "Number of variables": 4487,
+            "Sense": "minimize",
+            "Upper bound": 67.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 2026,
+                    "Number of created subproblems": 2026
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 6.7000000000e+01",
+            "Time": 4.737046957015991,
+            "User time": 4.67
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 84.0,
+            "Name": "tmp2a3_dvs6",
+            "Number of constraints": 6657,
+            "Number of nonzeros": 30395,
+            "Number of objectives": 1,
+            "Number of variables": 3709,
+            "Sense": "minimize",
+            "Upper bound": 143.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 1.4300000000e+02",
+            "Time": 600.0991780757904,
+            "User time": 600.01
+        }
+    ]
+}

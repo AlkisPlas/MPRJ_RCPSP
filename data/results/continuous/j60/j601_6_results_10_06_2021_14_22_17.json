@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 52.0,
+            "Name": "tmpjoco_4af",
+            "Number of constraints": 9651,
+            "Number of nonzeros": 29283,
+            "Number of objectives": 1,
+            "Number of variables": 5469,
+            "Sense": "minimize",
+            "Upper bound": 52.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 4930,
+                    "Number of created subproblems": 4930
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.2000000000e+01",
+            "Time": 22.898403882980347,
+            "User time": 22.82
+        }
+    ]
+}

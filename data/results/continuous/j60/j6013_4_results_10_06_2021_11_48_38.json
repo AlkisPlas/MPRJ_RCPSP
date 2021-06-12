@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 63.0,
+            "Name": "tmpbxku2880",
+            "Number of constraints": 9917,
+            "Number of nonzeros": 46517,
+            "Number of objectives": 1,
+            "Number of variables": 5561,
+            "Sense": "minimize",
+            "Upper bound": 134.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 1.3400000000e+02",
+            "Time": 600.1819381713867,
+            "User time": 600.01
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 49.0,
+            "Name": "tmpwv3knfml",
+            "Number of constraints": 1622,
+            "Number of nonzeros": 6967,
+            "Number of objectives": 1,
+            "Number of variables": 861,
+            "Sense": "minimize",
+            "Upper bound": 49.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 2116,
+                    "Number of created subproblems": 2116
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 4.9000000000e+01",
+            "Time": 2.165907859802246,
+            "User time": 2.14
+        }
+    ]
+}

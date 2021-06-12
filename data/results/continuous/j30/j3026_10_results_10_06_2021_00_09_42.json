@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 49.0,
+            "Name": "tmpazf35uz1",
+            "Number of constraints": 1927,
+            "Number of nonzeros": 7507,
+            "Number of objectives": 1,
+            "Number of variables": 1041,
+            "Sense": "minimize",
+            "Upper bound": 49.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 1882,
+                    "Number of created subproblems": 1882
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 4.9000000000e+01",
+            "Time": 3.6184871196746826,
+            "User time": 3.59
+        }
+    ]
+}

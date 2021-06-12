@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 98.052631579,
+            "Name": "tmp61kjctur",
+            "Number of constraints": 7036,
+            "Number of nonzeros": 28627,
+            "Number of objectives": 1,
+            "Number of variables": 3893,
+            "Sense": "minimize",
+            "Upper bound": 107.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 1.0700000000e+02",
+            "Time": 600.0976819992065,
+            "User time": 600.01
+        }
+    ]
+}

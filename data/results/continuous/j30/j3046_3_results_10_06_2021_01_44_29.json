@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 64.0,
+            "Name": "tmpehj5b2_i",
+            "Number of constraints": 1629,
+            "Number of nonzeros": 7001,
+            "Number of objectives": 1,
+            "Number of variables": 865,
+            "Sense": "minimize",
+            "Upper bound": 65.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 6.5000000000e+01",
+            "Time": 979.018618106842,
+            "User time": 978.99
+        }
+    ]
+}

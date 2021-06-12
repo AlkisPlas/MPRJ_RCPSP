@@ -1,0 +1,30 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 73.0,
+            "Name": "tmpjb_vpd1y",
+            "Number of constraints": 9413,
+            "Number of nonzeros": 38881,
+            "Number of objectives": 1,
+            "Number of variables": 5273,
+            "Sense": "minimize",
+            "Upper bound": 78.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "maxTimeLimit",
+            "Termination message": "MIP - Time limit exceeded, integer feasible\\x3a Objective = 7.8000000000e+01",
+            "Time": 600.1254887580872,
+            "User time": 600.01
+        }
+    ]
+}

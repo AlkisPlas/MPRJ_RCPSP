@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 70.0,
+            "Name": "tmpka_q7nqf",
+            "Number of constraints": 9658,
+            "Number of nonzeros": 40217,
+            "Number of objectives": 1,
+            "Number of variables": 5413,
+            "Sense": "minimize",
+            "Upper bound": 70.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 4514,
+                    "Number of created subproblems": 4514
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.0000000000e+01",
+            "Time": 27.025555849075317,
+            "User time": 26.93
+        }
+    ]
+}

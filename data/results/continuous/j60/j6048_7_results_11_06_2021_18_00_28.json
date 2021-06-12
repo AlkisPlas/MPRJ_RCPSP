@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 77.0,
+            "Name": "tmpgt5smdd_",
+            "Number of constraints": 7267,
+            "Number of nonzeros": 33537,
+            "Number of objectives": 1,
+            "Number of variables": 4025,
+            "Sense": "minimize",
+            "Upper bound": 77.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 0,
+                    "Number of created subproblems": 0
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.7000000000e+01",
+            "Time": 0.16045594215393066,
+            "User time": 0.1
+        }
+    ]
+}

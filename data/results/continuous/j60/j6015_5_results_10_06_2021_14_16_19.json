@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 70.0,
+            "Name": "tmpiz7kfspg",
+            "Number of constraints": 9546,
+            "Number of nonzeros": 44715,
+            "Number of objectives": 1,
+            "Number of variables": 5349,
+            "Sense": "minimize",
+            "Upper bound": 70.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 1699,
+                    "Number of created subproblems": 1699
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 7.0000000000e+01",
+            "Time": 15.593629837036133,
+            "User time": 15.51
+        }
+    ]
+}

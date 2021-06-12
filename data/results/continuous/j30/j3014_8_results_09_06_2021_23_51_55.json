@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 54.0,
+            "Name": "tmpqfz2nhpd",
+            "Number of constraints": 2204,
+            "Number of nonzeros": 9851,
+            "Number of objectives": 1,
+            "Number of variables": 1205,
+            "Sense": "minimize",
+            "Upper bound": 54.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 30,
+                    "Number of created subproblems": 30
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.4000000000e+01",
+            "Time": 0.43207693099975586,
+            "User time": 0.4
+        }
+    ]
+}

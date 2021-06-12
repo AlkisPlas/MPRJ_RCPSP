@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 54.0,
+            "Name": "tmp9l265ynr",
+            "Number of constraints": 1758,
+            "Number of nonzeros": 7218,
+            "Number of objectives": 1,
+            "Number of variables": 1035,
+            "Sense": "minimize",
+            "Upper bound": 54.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 1989,
+                    "Number of created subproblems": 1989
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 5.4000000000e+01",
+            "Time": 3.448389768600464,
+            "User time": 3.42
+        }
+    ]
+}

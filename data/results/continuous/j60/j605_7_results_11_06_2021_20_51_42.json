@@ -1,0 +1,22 @@
+{
+    "Problem": [
+        {
+            "Lower bound": -Infinity,
+            "Number of constraints": 8646,
+            "Number of nonzeros": 29969,
+            "Number of objectives": 1,
+            "Number of variables": 5025,
+            "Sense": "unknown",
+            "Upper bound": Infinity
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Status": "ok",
+            "Termination condition": "unknown",
+            "Time": 994.9257619380951,
+            "User time": 994.89
+        }
+    ]
+}
