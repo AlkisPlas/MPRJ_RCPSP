@@ -22,10 +22,10 @@ model.r_cap = Param(model.r_set)
 
 # Resource consumption of activities
 model.r_cons = Param(model.act_set, model.r_set,
-                     within=NonNegativeReals, mutable=True)
+                     within=NonNegativeIntegers, mutable=True)
 
 # Activity processing times
-model.act_proc = Param(model.act_set, within=NonNegativeReals)
+model.act_proc = Param(model.act_set, within=NonNegativeIntegers)
 
 # Activity time windows
 model.est = Param(model.act_set, within=NonNegativeIntegers)
@@ -50,7 +50,7 @@ model.fin = Var(model.act_set, within=NonNegativeIntegers)
 Execution sequence variables.
 
 For activities that cannot be executed in parallel x[i,j] = 1 if fin[i] <= start[j], 0 otherwise
-For activities that can be executed in parallel x[i,j] = 1 if start[i] <= fin[j], 0 otherwise
+For activities that can be executed in parallel x[i,j] = 1 if start[i] <= start[j], 0 otherwise
 '''
 model.x_set = (model.B | model.G) - model.K
 model.x = Var(model.x_set, within=Binary)
@@ -91,11 +91,8 @@ because there are not enough resources for them to overlap. If j is scheduled be
 then the constraint is skipped because fin[i] - start[j] <= lft[i] - est[j] always holds
 '''
 def activity_non_overlapping_precedence(m, i, j):
-    if i > j:
-        return m.fin[i] <= m.start[j] + (m.lft[i] - m.est[j]) * m.x[j, i]
-    
-    return Constraint.Skip
-    
+    return m.fin[i] <= m.start[j] + (m.lft[i] - m.est[j]) * m.x[j, i]
+        
 model.activity_non_overlapping_precedence_constraint = Constraint(
     model.S, rule=activity_non_overlapping_precedence)
 
@@ -155,7 +152,10 @@ def resource_capacity_constraint(m, i, k):
 model.resource_constraint = Constraint(
     model.act_set, model.r_set, rule=resource_capacity_constraint)
 
-
+'''
+For activities that can be executed in parallel,
+if i starts before j then j must be overlapping i.
+'''
 def tighten_decision_variables(m, i, j):
     return m.x[i, j] <= m.z[j, i]
 
