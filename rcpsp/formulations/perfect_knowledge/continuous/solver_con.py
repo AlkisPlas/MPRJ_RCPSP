@@ -4,6 +4,7 @@ from pyomo.core.base.component import CloneError
 import pyomo.dataportal as dp
 import pyomo.environ as pyo
 import rcpsp_con as rcpsp
+from rcpsp.heuristics.sgs import serial_schedule_generation
 
 data = dp.DataPortal()
 
@@ -11,7 +12,7 @@ instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=sys.arg
 instance_name = sys.argv[2]
 
 #instance_dir = 'data/test_data/'
-#instance_name = 'rcpsp_test_instance_2'
+#instance_name = 'rcpsp_test_instance_1'
 
 print('\nSolving instance:' + instance_name)
 
@@ -59,6 +60,7 @@ lft = {act : val + data['act_proc'][act] for act, val in lst.items()}
 data['lst'] = lst
 data['lft'] = lft
 
+print(serial_schedule_generation(data))
 
 # Get transitive closure of graph
 # TODO - merge with the DFS above
@@ -93,13 +95,18 @@ for i, j in C:
     if (i, j) not in C and lft[i] <= est[j]:
         D.update([(i, j)])
 
-
+# Activities sharing at least one resource
 data['B'] = B
+# Precedence transitive closure. All hard precedence relationships
 data['C'] = C
+# Activities that cannot be executed in parallel due to resource cap violations.
 data['G'] = G
 K = C.union(D)
 data['K'] = K
+# Activities that cannot overlap due to resource capacity limitations, 
+# excluding those with known precedence relations
 data['S'] = G.difference(K)
+# Activities that can overlap
 data['P'] = B.difference(G.union(K))
 
 print('Preprocessing phase complete. Sending to solver...')
@@ -110,6 +117,7 @@ instance = rcpsp.model.create_instance(data)
 opt = pyo.SolverFactory('cplex')
 opt.options['threads'] = 2
 opt.options['timelimit'] = 600
+#opt.options['mipgap'] = 0.05
 results = opt.solve(instance, load_solutions=True)
 
 

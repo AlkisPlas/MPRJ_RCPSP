@@ -55,7 +55,7 @@ data['lft'] = lft
 
 '''
 TODO - Run SGS and construct an initial schedule.
-Schedule does not have to be feasible.
+Schedule does not have to be optimal.
 Will only be used for lower/upper bounds
 '''
 
