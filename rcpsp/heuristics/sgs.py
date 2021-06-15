@@ -44,6 +44,7 @@ def serial_schedule_generation(inst):
                             active = get_active_jobs(moment, scheduled, fin, p)
                             if r_cons[j, k] > r_cap[k] - sum(r_cons[act_j, k] for act_j in active):
                                 is_eligible = False
+                                break
 
                     if is_eligible:
                         eligible_times.append(t)
