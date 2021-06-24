@@ -71,15 +71,17 @@ instance = rcpsp.model.create_instance(data)
 
 # Solve instance and print results
 opt = pyo.SolverFactory('cplex')
-opt.options['threads'] = 1
+opt.options['threads'] = 2
+opt.options['timelimit'] = 600
 results = opt.solve(instance, load_solutions=True)
 
+results.write(filename='data/results/discrete/{instance_dir}/{instance_name}_results_{timestamp}.json'
+              .format(instance_dir=sys.argv[1], instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
 
-results.write(filename='data/results/discrete/{instance_name}_results_{timestamp}.json'
-              .format(instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
-
+'''
 print(results.solver)
 for v in instance.component_data_objects(pyo.Var):
     if v.value is not None and int(v.value) == 1:
         act = str(v).split('[')[1].split(',')
         print('Activity {act} starts at {start}'.format(act=act[0], start=act[1].split(']')[0]))
+'''
