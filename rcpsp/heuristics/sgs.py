@@ -2,24 +2,16 @@ from pkg_resources import safe_version
 import random
 
 
-def serial_schedule_generation(inst):
-
-    eft = inst['eft']
-    lft = inst['lft']
-    n = inst['act_count']
-    p = inst['act_proc']
-    preds = inst['act_pre']
-    r_count = inst['r_count']
-    r_cons = inst['r_cons']
-    r_cap = inst['r_cap']
-
+def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
+    
+    eft = {}    
     fin = {}
     scheduled = []
 
     fin[0] = 0
     scheduled.append(0)
 
-    for g in range(1, n + 2):
+    for g in range(n + 1):
 
         eligible_activities = [j for j in range(1, n + 2) if j not in scheduled and set(
             preds[j]) <= set(scheduled)]

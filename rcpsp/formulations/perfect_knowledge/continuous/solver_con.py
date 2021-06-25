@@ -60,8 +60,6 @@ lft = {act : val + data['act_proc'][act] for act, val in lst.items()}
 data['lst'] = lst
 data['lft'] = lft
 
-print(serial_schedule_generation(data))
-
 # Get transitive closure of graph
 # TODO - merge with the DFS above
 C = set()
