@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 85.0,
+            "Name": "tmpxs8nvs21",
+            "Number of constraints": 9243,
+            "Number of nonzeros": 27825,
+            "Number of objectives": 1,
+            "Number of variables": 5167,
+            "Sense": "minimize",
+            "Upper bound": 85.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 3672,
+                    "Number of created subproblems": 3672
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 8.5000000000e+01",
+            "Time": 16.698650121688843,
+            "User time": 16.63
+        }
+    ]
+}

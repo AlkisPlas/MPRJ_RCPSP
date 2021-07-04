@@ -32,6 +32,7 @@ model.est = Param(model.act_set, within=NonNegativeIntegers)
 model.lst = Param(model.act_set, within=NonNegativeIntegers)
 model.eft = Param(model.act_set, within=NonNegativeIntegers)
 model.lft = Param(model.act_set, within=NonNegativeIntegers)
+model.upper_bound = Param(within=NonNegativeIntegers)
 
 # Modelling sets.
 model.B = Set(dimen=2)
@@ -172,6 +173,11 @@ def preprocessing_phase_relaxation(m, i, j):
 model.preprocessing_phase_relaxation_constraint = Constraint(
     model.P, rule=preprocessing_phase_relaxation)
 
+
+def upper_bound_constraint(m, i):
+    return m.fin[i] <= m.upper_bound
+        
+model.upper_bound_constraint = Constraint(model.act_set, rule=upper_bound_constraint)
 
 # Minimize finish time of the last activity
 def finish_time_objective(m):

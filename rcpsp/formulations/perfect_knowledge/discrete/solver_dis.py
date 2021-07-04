@@ -10,6 +10,8 @@ data = dp.DataPortal()
 instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=sys.argv[1])
 instance_name = sys.argv[2]
 
+print('\nSolving instance:' + instance_name)
+
 data.load(filename=instance_dir + instance_name + '.json')
 
 act_count = data['act_count']
@@ -73,6 +75,7 @@ for act in range(sink + 1):
         x_set_init.append((act, t))
 data["x_set_init"] = x_set_init
 
+print('Preprocessing phase complete. Sending to solver...')
 instance = rcpsp.model.create_instance(data)
 #instance.pprint()
 

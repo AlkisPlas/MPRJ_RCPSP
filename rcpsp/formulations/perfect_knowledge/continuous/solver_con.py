@@ -11,60 +11,75 @@ data = dp.DataPortal()
 instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=sys.argv[1])
 instance_name = sys.argv[2]
 
-#instance_dir = 'data/test_data/'
-#instance_name = 'rcpsp_test_instance_1'
-
 print('\nSolving instance:' + instance_name)
 
 data.load(filename=instance_dir + instance_name + '.json')
 
+act_count = data['act_count']
+act_proc = data['act_proc']
+act_pre = data['act_pre']
+r_count = data['r_count']
+r_cons = data['r_cons']
+r_cap = data['r_cap']
+
 # Initialize dummy source and sink activities
 source = 0
-sink = data['act_count'] + 1
+sink = act_count + 1
 
-data['act_proc'][source] = 0
-data['act_proc'][sink] = 0
+act_proc[source] = 0
+act_proc[sink] = 0
 
-for r in range(1, data['r_count'] + 1):
-    data['r_cons'][source, r] = 0
-    data['r_cons'][sink, r] = 0
+for r in range(1, r_count + 1):
+    r_cons[source, r] = 0
+    r_cons[sink, r] = 0
 
-# Calculate initial upper bound as sum of processing times
-upper_bound = sum(data['act_proc'].values())
-data['upper_bound'] = {None: upper_bound}
+upper_bound = sum(act_proc.values())
 
 # Calculate earliest starting and finishing times
 est = {}
 for act in range(sink + 1):
-    est[act] = max((est[pre] + data['act_proc'][pre]
-                   for pre in data['act_pre'][act]), default=0)
-eft = {act : val + data['act_proc'][act] for act, val in est.items()}
+    est[act] = max((est[pre] + act_proc[pre]
+                   for pre in act_pre[act]), default=0)
+eft = {act : val + act_proc[act] for act, val in est.items()}
 data['est'] = est
 data['eft'] = eft
 
 # Calculate latest starting and finishing times
 #TODO - Change the DFS to CPM
-lst = {}
-lst[sink] = upper_bound
+lst_init = {}
+# Calculate initial upper bound as sum of processing times
+lst_init[sink] = sum(act_proc.values())
 visited = []
 
-def get_latest_starting_time(act):
-    for pre in data['act_pre'][act]:
+def get_latest_starting_time(act, lst):
+    for pre in act_pre[act]:
         if pre not in visited:
             visited.append(pre)
-            lst[pre] = lst[act] - data['act_proc'][pre]
-            get_latest_starting_time(pre)
+            lst[pre] = lst[act] - act_proc[pre]
+            get_latest_starting_time(pre, lst)
 
-get_latest_starting_time(sink)
-lft = {act : val + data['act_proc'][act] for act, val in lst.items()}
+get_latest_starting_time(sink, lst_init)
+lft_init = {act : val + act_proc[act] for act, val in lst_init.items()}
+
+upper_bound = serial_schedule_generation(
+    act_count, act_proc, act_pre, r_count, r_cons, r_cap, lft_init)
+
+lst = {}
+lst[sink] = upper_bound
+visited.clear()
+
+get_latest_starting_time(sink, lst)
+lft = {act : val + act_proc[act] for act, val in lst.items()}
+
 data['lst'] = lst
 data['lft'] = lft
+data['upper_bound'] = {None: upper_bound}
 
 # Get transitive closure of graph
 # TODO - merge with the DFS above
 C = set()
 def get_transitive_closure(root, act):
-    for pre in data['act_pre'][act]:
+    for pre in act_pre[act]:
         if (pre, root) not in C:
             C.update([(pre, root)])
             C.update([(root, pre)])
@@ -73,19 +88,18 @@ def get_transitive_closure(root, act):
 for act in range(sink + 1):
     get_transitive_closure(act, act)
 
-
 # Custom sets
 B = set()
 D = set()
 G = set()
 for i in range(1, sink):
     for j in range(1, sink):
-        if i!=j and (data['r_cons'][i, k] > 0 and data['r_cons'][j, k] > 0 for k in range(1, data['r_count'] + 1)):
+        if i!=j and (r_cons[i, k] > 0 and r_cons[j, k] > 0 for k in range(1, r_count + 1)):
             B.update([(i, j)])
 
 for i, j in B:
-    for k in range(1, data['r_count'] + 1):
-        if data['r_cons'][i, k] + data['r_cons'][j, k] > data['r_cap'][k]:
+    for k in range(1, r_count + 1):
+        if r_cons[i, k] + r_cons[j, k] > r_cap[k]:
             G.update([(i, j)])
             break
 
