@@ -22,9 +22,7 @@ def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
 
         while eligible_activities:
 
-            j = random.choice(eligible_activities)
-            eligible_activities.remove(j)
-
+            j = eligible_activities.pop(0)
             eft[j] = max((fin[pre] for pre in preds[j]), default=0) + p[j]
 
             eligible_times = []
