@@ -46,26 +46,33 @@ data['eft'] = eft
 
 # Calculate latest starting and finishing times
 #TODO - Change the DFS to CPM
-lst = {}
-lst[sink] = upper_bound
+lst_init = {}
+# Calculate initial upper bound as sum of processing times
+lst_init[sink] = sum(act_proc.values())
 visited = []
 
-def get_latest_starting_time(act):
+def get_latest_starting_time(act, lst):
     for pre in act_pre[act]:
         if pre not in visited:
             visited.append(pre)
             lst[pre] = lst[act] - act_proc[pre]
-            get_latest_starting_time(pre)
+            get_latest_starting_time(pre, lst)
 
-get_latest_starting_time(sink)
+get_latest_starting_time(sink, lst_init)
+lft_init = {act : val + act_proc[act] for act, val in lst_init.items()}
+
+upper_bound = serial_schedule_generation(
+    act_count, act_proc, act_pre, r_count, r_cons, r_cap, lft_init)
+
+lst = {}
+lst[sink] = upper_bound
+visited.clear()
+
+get_latest_starting_time(sink, lst)
 lft = {act : val + act_proc[act] for act, val in lst.items()}
+
 data['lst'] = lst
 data['lft'] = lft
-
-#Get new upper bound with SGS
-upper_bound = serial_schedule_generation(
-    act_count, act_proc, act_pre, r_count, r_cons, r_cap, lft)
-
 data['upper_bound'] = {None: upper_bound}
 
 # Initialize variable sparse index set 
