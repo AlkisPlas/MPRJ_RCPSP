@@ -78,7 +78,7 @@ data['upper_bound'] = {None: upper_bound}
 # Initialize variable sparse index set 
 x_set_init = []
 for act in range(sink + 1):
-    for t in range(data['est'][act], data['lst'][act] + 1):
+    for t in range(est[act], lst[act] + 1):
         x_set_init.append((act, t))
 data["x_set_init"] = x_set_init
 

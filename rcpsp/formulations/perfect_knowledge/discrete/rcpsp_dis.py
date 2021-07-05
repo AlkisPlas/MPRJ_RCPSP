@@ -39,6 +39,8 @@ model.x_set_init = Set(dimen=2)
 model.x = Var(model.x_set_init, within=Binary, initialize=False, dense=False)
 
 # Resource capacity constraint for resource r at time t
+
+
 def resource_capacity_constraint(m, r, t):
 
     r_sum = sum(
@@ -47,12 +49,13 @@ def resource_capacity_constraint(m, r, t):
         for q in range(
             max(0, t - value(m.act_proc[act]) + 1), t + 1
         ) if q >= m.est[act] and q <= m.lst[act]
-    )  
-    
+    )
+
     if isinstance(r_sum, int):
         return Constraint.Skip
 
-    return r_sum <= m.r_cap[r]  
+    return r_sum <= m.r_cap[r]
+
 
 model.resource_constraint = Constraint(
     model.r_set, model.period_set, rule=resource_capacity_constraint)
@@ -64,10 +67,11 @@ def activity_precedence_constraint(m, n, pre_n):
         return Constraint.Skip
 
     if pre_n in value(m.act_pre[n]):
-        return sum(t * m.x[pre_n, t] for t in range(m.est[pre_n], m.lst[pre_n])) \
-            <= sum(t * m.x[n, t] for t in range(m.est[n], m.lst[n])) - m.act_proc[pre_n]
+        return sum(t * m.x[pre_n, t] for t in range(m.est[pre_n], m.lst[pre_n] + 1)) \
+            <= sum(t * m.x[n, t] for t in range(m.est[n], m.lst[n] + 1)) - m.act_proc[pre_n]
 
     return Constraint.Skip
+
 
 model.precedence_constraint = Constraint(
     model.act_set, model.act_set, rule=activity_precedence_constraint)
@@ -75,7 +79,8 @@ model.precedence_constraint = Constraint(
 
 # Non preemption constraint for activity n
 def no_preemption_constraint(m, n):
-    return sum(m.x[n, t] for t in range(m.est[n], m.lst[n])) == 1
+    return sum(m.x[n, t] for t in range(m.est[n], m.lst[n] + 1)) == 1
+
 
 model.no_preemption_constraint = Constraint(
     model.act_set, rule=no_preemption_constraint)
@@ -84,6 +89,7 @@ model.no_preemption_constraint = Constraint(
 # Objective - Minimize finish time of the last activity
 def finish_time_objective(m):
     last_activity = value(m.act_count) + 1
-    return sum(t * m.x[last_activity, t] for t in range(m.est[last_activity], m.lst[last_activity]))
+    return sum(t * m.x[last_activity, t] for t in range(m.est[last_activity], m.lst[last_activity] + 1))
+
 
 model.OBJ = Objective(rule=finish_time_objective)
