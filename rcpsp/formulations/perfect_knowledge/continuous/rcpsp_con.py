@@ -45,7 +45,7 @@ model.P = Set(dimen=2)
 # Decision variables.
 # Activity start and finishing times.
 model.start = Var(model.act_set, within=NonNegativeIntegers)
-model.fin = Var(model.act_set, within=NonNegativeIntegers)
+model.fin = Var(model.act_set, within=NonNegativeIntegers, bounds=(0, model.upper_bound))
 
 '''
 Execution sequence variables.
@@ -174,10 +174,11 @@ model.preprocessing_phase_relaxation_constraint = Constraint(
     model.P, rule=preprocessing_phase_relaxation)
 
 
-def upper_bound_constraint(m, i):
-    return m.fin[i] <= m.upper_bound
+def tighten_finish_times(m, i):
+    return m.fin[i] <= m.lft[i]
         
-model.upper_bound_constraint = Constraint(model.act_set, rule=upper_bound_constraint)
+model.tighten_finish_times_constraint = Constraint(model.act_set, rule=tighten_finish_times)
+
 
 # Minimize finish time of the last activity
 def finish_time_objective(m):
