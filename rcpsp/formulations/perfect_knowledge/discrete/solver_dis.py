@@ -45,8 +45,8 @@ data['est'] = est
 data['eft'] = eft
 
 # Calculate latest starting and finishing times
-#TODO - Change the DFS to CPM
 lst_init = {}
+
 # Calculate initial upper bound as sum of processing times
 lst_init[sink] = sum(act_proc.values())
 visited = []

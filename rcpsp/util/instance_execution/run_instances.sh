@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PYTHONPATH="${PYTHONPATH}:/Users/alplas/kings/dissertation/MPRJ_RCPSP"
+
 scriptdir=$(dirname "$0")
 instancebase=${scriptdir}/../../../data/instances
 solverbase=${scriptdir}/../../../rcpsp/formulations/perfect_knowledge

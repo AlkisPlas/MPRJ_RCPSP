@@ -1,0 +1,36 @@
+{
+    "Problem": [
+        {
+            "Lower bound": 95.0,
+            "Name": "tmpu_un83wq",
+            "Number of constraints": 758,
+            "Number of nonzeros": 93222,
+            "Number of objectives": 1,
+            "Number of variables": 6357,
+            "Sense": "minimize",
+            "Upper bound": 95.0
+        }
+    ],
+    "Solution": [
+        {
+            "number of solutions": 0,
+            "number of solutions displayed": 0
+        }
+    ],
+    "Solver": [
+        {
+            "Error rc": 0,
+            "Statistics": {
+                "Branch and bound": {
+                    "Number of bounded subproblems": 6536,
+                    "Number of created subproblems": 6536
+                }
+            },
+            "Status": "ok",
+            "Termination condition": "optimal",
+            "Termination message": "MIP - Integer optimal solution\\x3a Objective = 9.5000000000e+01",
+            "Time": 35.02193784713745,
+            "User time": 34.96
+        }
+    ]
+}

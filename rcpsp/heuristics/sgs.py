@@ -8,6 +8,8 @@ def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
     fin = {}
     scheduled = []
 
+    lst = {act : val - p[act] for act, val in lft.items()}
+
     fin[0] = 0
     scheduled.append(0)
 
@@ -20,8 +22,11 @@ def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
             print('No feasible schedule could be structured.')
             break
 
-        while eligible_activities:
+        # Sort eligible activities according to the min LST priority rule
+        # sort_asc_lst(eligible_activities, lst)
 
+        while eligible_activities:
+            
             j = eligible_activities.pop(0)
             eft[j] = max((fin[pre] for pre in preds[j]), default=0) + p[j]
 
@@ -49,3 +54,15 @@ def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
 
 def get_active_jobs(t, scheduled, fin, p):
     return [s for s in scheduled if fin[s] > t and fin[s] - p[s] <= t]
+
+
+def sort_asc_lst(eligible_activities, lst):
+    n = len(eligible_activities)
+    for i in range(n):
+        swapped = False
+        for j in range(0, n-i-1):
+            if lst[eligible_activities[j]] > lst[eligible_activities[j+1]] :
+                eligible_activities[j], eligible_activities[j+1] = eligible_activities[j+1], eligible_activities[j]
+                swapped = True
+        if swapped == False:
+            break

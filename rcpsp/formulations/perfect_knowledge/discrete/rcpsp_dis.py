@@ -39,8 +39,6 @@ model.x_set_init = Set(dimen=2)
 model.x = Var(model.x_set_init, within=Binary, initialize=False, dense=False)
 
 # Resource capacity constraint for resource r at time t
-
-
 def resource_capacity_constraint(m, r, t):
 
     r_sum = sum(
