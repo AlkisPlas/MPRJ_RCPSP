@@ -61,6 +61,7 @@ model.resource_constraint = Constraint(
 
 # Precedence constraint for activity n
 def activity_precedence_constraint(m, n, pre_n):
+    # The dummy source doesn't have predecessors
     if n == 0:
         return Constraint.Skip
 

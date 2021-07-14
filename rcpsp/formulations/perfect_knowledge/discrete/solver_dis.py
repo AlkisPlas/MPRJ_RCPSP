@@ -4,6 +4,8 @@ import pyomo.dataportal as dp
 import pyomo.environ as pyo
 import rcpsp_dis as rcpsp
 from rcpsp.heuristics.sgs import serial_schedule_generation
+from rcpsp.heuristics.forward_recursion import get_earliest_times
+from rcpsp.heuristics.backward_recursion import BackwardRecursion
 
 data = dp.DataPortal()
 
@@ -32,44 +34,22 @@ for r in range(1, r_count + 1):
     r_cons[source, r] = 0
     r_cons[sink, r] = 0
 
-# Calculate initial upper bound as sum of processing times
-upper_bound = sum(act_proc.values())
-
 # Calculate earliest starting and finishing times
-est = {}
-for act in range(sink + 1):
-    est[act] = max((est[pre] + act_proc[pre]
-                   for pre in act_pre[act]), default=0)
-eft = {act : val + act_proc[act] for act, val in est.items()}
+est, eft = get_earliest_times(sink + 1, act_pre, act_proc)
 data['est'] = est
 data['eft'] = eft
 
-# Calculate latest starting and finishing times
-lst_init = {}
+# Calculate initial latest start and finish times. Upper bound is the sum of processing times
+br_init = BackwardRecursion(sink, sum(act_proc.values()), act_pre, act_proc)
+lst_init, lft_init = br_init.get_latest_times()
 
-# Calculate initial upper bound as sum of processing times
-lst_init[sink] = sum(act_proc.values())
-visited = []
-
-def get_latest_starting_time(act, lst):
-    for pre in act_pre[act]:
-        if pre not in visited:
-            visited.append(pre)
-            lst[pre] = lst[act] - act_proc[pre]
-            get_latest_starting_time(pre, lst)
-
-get_latest_starting_time(sink, lst_init)
-lft_init = {act : val + act_proc[act] for act, val in lst_init.items()}
-
+# Tighten upper bound with SGS
 upper_bound = serial_schedule_generation(
     act_count, act_proc, act_pre, r_count, r_cons, r_cap, lft_init)
 
-lst = {}
-lst[sink] = upper_bound
-visited.clear()
-
-get_latest_starting_time(sink, lst)
-lft = {act : val + act_proc[act] for act, val in lst.items()}
+# Calculate latest start and finishing times using the new upper bound
+br = BackwardRecursion(sink, upper_bound, act_pre, act_proc)
+lst, lft = br.get_latest_times()
 
 data['lst'] = lst
 data['lft'] = lft
