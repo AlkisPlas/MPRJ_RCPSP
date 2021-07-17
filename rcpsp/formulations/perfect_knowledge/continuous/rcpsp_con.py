@@ -105,23 +105,10 @@ as dictated by the decision variables. If j is scheduled before i (xji = 1) then
 because start[i] - start[j] <= lst[i] - est[j] always holds
 '''
 def activity_overlapping_precedence_1(m, i, j):
-    if i > j:
-        return m.start[j] <= m.start[i] + (m.lst[j] - m.est[i]) * m.x[i, j]
-
-    return Constraint.Skip
+    return m.start[j] <= m.start[i] + (m.lst[j] - m.est[i]) * m.x[i, j]
 
 model.activity_overlapping_precedence_constraint_1 = Constraint(
     model.P, rule=activity_overlapping_precedence_1)
-
-
-def activity_overlapping_precedence_2(m, i, j):
-    if i > j:
-        return m.start[i] + 0.1 <= m.start[j] + (m.lst[i] - m.est[j] + 0.1) * m.x[j, i]
-
-    return Constraint.Skip
-
-model.activity_overlapping_precedence_constraint_2 = Constraint(
-    model.P, rule=activity_overlapping_precedence_2)
 
 
 # For activities without hard precedence constraints, avoid execution cycles.

@@ -35,7 +35,7 @@ for r in range(1, r_count + 1):
     r_cons[source, r] = 0
     r_cons[sink, r] = 0
 
-# Calculate earliest starting and finishing times
+# Calculate earliest start and finish times
 est, eft = get_earliest_times(sink + 1, act_pre, act_proc)
 data['est'] = est
 data['eft'] = eft
@@ -48,7 +48,7 @@ lst_init, lft_init = br_init.get_latest_times()
 upper_bound = serial_schedule_generation(
     act_count, act_proc, act_pre, r_count, r_cons, r_cap, lft_init)
 
-# Calculate latest start and finishing times using the new upper bound
+# Calculate latest start and finish times using the new upper bound
 br = BackwardRecursion(sink, upper_bound, act_pre, act_proc)
 lst, lft = br.get_latest_times()
 
