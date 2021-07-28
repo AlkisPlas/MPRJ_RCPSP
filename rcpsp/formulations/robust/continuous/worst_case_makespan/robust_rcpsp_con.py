@@ -41,10 +41,8 @@ model.THETA = Param()
 model.GAMMA = Param()
 
 # Activity time windows
-model.est = Param(model.act_set, within=NonNegativeIntegers)
-model.lst = Param(model.act_set, within=NonNegativeIntegers)
-model.eft = Param(model.act_set, within=NonNegativeIntegers)
-model.lft = Param(model.act_set, within=NonNegativeIntegers)
+model.lst = Param(model.act_set, within=NonNegativeReals)
+model.lft = Param(model.act_set, within=NonNegativeReals)
 model.upper_bound = Param(within=NonNegativeIntegers)
 
 # Modelling sets.
@@ -207,6 +205,11 @@ def tighten_decision_variables(sub_m, i, j):
 model.inner.tighten_decision_variables_constraint = Constraint(
     model.P, rule=tighten_decision_variables)
 
+def tighten_finish_times(sub_m, i):
+    M = sub_m.model()
+    return sub_m.fin[i] <= M.lft[i]
+        
+model.inner.tighten_finish_times_constraint = Constraint(model.act_set, rule=tighten_finish_times)
 
 # Inner level Objective - Minimize finish time of the last activity
 def finish_time_objective_inner(sub_m):
@@ -215,7 +218,7 @@ def finish_time_objective_inner(sub_m):
 
 model.inner.OBJ = Objective(rule=finish_time_objective_inner, sense=minimize)
 
-# Outer level Objective - Maximize total duration
+# Adversarial Outer level Objective - Worst case makespan 
 def finish_time_objective_outer(m):
     return m.inner.fin[value(m.act_count) + 1]
     

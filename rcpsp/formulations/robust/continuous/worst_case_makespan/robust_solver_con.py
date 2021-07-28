@@ -26,11 +26,11 @@ r_cons = data['r_cons']
 r_cap = data['r_cap']
 
 # Worst case duration factor
-THETA = 0.5
+THETA = int(sys.argv[3]) if len(sys.argv) >= 4 else 0.5
 data['THETA'] = {None: THETA}
 
 # Uncertainty budget
-GAMMA = act_count / 2
+GAMMA = int(sys.argv[4]) if len(sys.argv) >= 5 else act_count / 2
 data['GAMMA'] = {None: GAMMA}
 
 print('\nSolving instance: {instance}. Using GAMMA={GAMMA}, THETA={THETA}'.format(instance=instance_name, GAMMA=GAMMA,THETA=THETA))
@@ -50,7 +50,22 @@ act_proc_worst = {}
 for act in act_proc:
     act_proc_worst[act] = round(act_proc[act] * (1 + THETA))
 data['act_proc_worst'] = act_proc_worst
-data['upper_bound'] = {None: sum(act_proc_worst.values())}
+
+# Calculate initial latest start and finish times. Upper bound is the sum of processing times
+br_init = BackwardRecursion(sink, sum(act_proc_worst.values()), act_pre, act_proc_worst)
+lst_init, lft_init = br_init.get_latest_times()
+
+# Tighten upper bound with SGS
+upper_bound = serial_schedule_generation(
+    act_count, act_proc_worst, act_pre, r_count, r_cons, r_cap, lft_init)
+
+# Calculate latest start and finish times using the new upper bound
+br = BackwardRecursion(sink, upper_bound, act_pre, act_proc_worst)
+lst, lft = br.get_latest_times()
+
+data['lst'] = lst
+data['lft'] = lft
+data['upper_bound'] = {None: upper_bound}
 
 # Get transitive closure of graph
 C = set()
