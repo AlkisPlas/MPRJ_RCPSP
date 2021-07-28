@@ -3,6 +3,7 @@ from pyomo.environ import *
 '''
 Binary Integer Programming formulation for the RCPSP.
 Time horizon is divided into discrete intervals.
+Deterministic activity durations
 '''
 model = AbstractModel(name="RCPSP_DISCRETE")
 

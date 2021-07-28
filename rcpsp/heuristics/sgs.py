@@ -20,7 +20,7 @@ def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
             break
 
         # For the min-lft priority rule
-        pr = {i:lft[i] for i in eligible_activities}
+        pr = {i: lft[i] for i in eligible_activities}
 
         while eligible_activities:
             

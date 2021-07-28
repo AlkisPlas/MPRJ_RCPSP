@@ -1,8 +1,8 @@
 from pyomo.environ import *
 
 '''
-Mixed-Integer Programming formulation for the RCPSP.
-Time horizon is continuous.
+Mixed-Integer linear formulation for the RCPSP.
+Continuous time horizon. Deterministic activity durations.
 '''
 model = AbstractModel(name="RCPSP_CONTINUOUS")
 
@@ -25,14 +25,14 @@ model.r_cons = Param(model.act_set, model.r_set,
                      within=NonNegativeIntegers, mutable=True)
 
 # Activity processing times
-model.act_proc = Param(model.act_set, within=NonNegativeIntegers)
+model.act_proc = Param(model.act_set, within=NonNegativeReals)
 
 # Activity time windows
-model.est = Param(model.act_set, within=NonNegativeIntegers)
-model.lst = Param(model.act_set, within=NonNegativeIntegers)
-model.eft = Param(model.act_set, within=NonNegativeIntegers)
-model.lft = Param(model.act_set, within=NonNegativeIntegers)
-model.upper_bound = Param(within=NonNegativeIntegers)
+model.est = Param(model.act_set, within=NonNegativeReals)
+model.lst = Param(model.act_set, within=NonNegativeReals)
+model.eft = Param(model.act_set, within=NonNegativeReals)
+model.lft = Param(model.act_set, within=NonNegativeReals)
+model.upper_bound = Param(within=NonNegativeReals)
 
 # Modelling sets.
 model.B = Set(dimen=2)
@@ -44,8 +44,8 @@ model.P = Set(dimen=2)
 
 # Decision variables.
 # Activity start and finishing times.
-model.start = Var(model.act_set, within=NonNegativeIntegers)
-model.fin = Var(model.act_set, within=NonNegativeIntegers, bounds=(0, model.upper_bound))
+model.start = Var(model.act_set, within=NonNegativeReals)
+model.fin = Var(model.act_set, within=NonNegativeReals, bounds=(0, model.upper_bound))
 
 '''
 Execution sequence variables.
@@ -105,10 +105,23 @@ as dictated by the decision variables. If j is scheduled before i (xji = 1) then
 because start[i] - start[j] <= lst[i] - est[j] always holds
 '''
 def activity_overlapping_precedence_1(m, i, j):
-    return m.start[j] <= m.start[i] + (m.lst[j] - m.est[i]) * m.x[i, j]
+    if i > j:
+        return m.start[j] <= m.start[i] + (m.lst[j] - m.est[i]) * m.x[i, j]
+
+    return Constraint.Skip
 
 model.activity_overlapping_precedence_constraint_1 = Constraint(
     model.P, rule=activity_overlapping_precedence_1)
+
+
+def activity_overlapping_precedence_2(m, i, j):
+    if i > j:
+        return m.start[i] + 0.1 <= m.start[j] + (m.lst[i] - m.est[j] + 0.1) * m.x[j, i]
+
+    return Constraint.Skip
+
+model.activity_overlapping_precedence_constraint_2 = Constraint(
+    model.P, rule=activity_overlapping_precedence_2)
 
 
 # For activities without hard precedence constraints, avoid execution cycles.

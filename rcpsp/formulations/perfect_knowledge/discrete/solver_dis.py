@@ -12,6 +12,9 @@ data = dp.DataPortal()
 instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=sys.argv[1])
 instance_name = sys.argv[2]
 
+#instance_dir = 'data/test_data/'
+#instance_name = 'rcpsp_test_instance_1'
+
 print('\nSolving instance:' + instance_name)
 
 data.load(filename=instance_dir + instance_name + '.json')
@@ -35,7 +38,7 @@ for r in range(1, r_count + 1):
     r_cons[sink, r] = 0
 
 # Calculate earliest start and finish times
-est, eft = get_earliest_times(sink + 1, act_pre, act_proc)
+est, eft = get_earliest_times(sink, act_pre, act_proc)
 data['est'] = est
 data['eft'] = eft
 
@@ -69,16 +72,27 @@ instance = rcpsp.model.create_instance(data)
 # Solve instance and print results
 opt = pyo.SolverFactory('cplex')
 opt.options['threads'] = 2
-opt.options['timelimit'] = 600
+#opt.options['randomseed'] = 3
+opt.options['timelimit'] = 20 * 60
 results = opt.solve(instance, load_solutions=True)
+
 
 results.write(filename='data/results/discrete/{instance_dir}/{instance_name}_results_{timestamp}.json'
               .format(instance_dir=sys.argv[1], instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
 
+print('Done\n')
+
 '''
-print(results.solver)
+total_free_slack=0
+num_activities = 0
 for v in instance.component_data_objects(pyo.Var):
     if v.value is not None and int(v.value) == 1:
+        num_activities+=1
         act = str(v).split('[')[1].split(',')
-        print('Activity {act} starts at {start}'.format(act=act[0], start=act[1].split(']')[0]))
+        start=act[1].split(']')[0]
+        total_free_slack += lst[int(act[0])] - int(start)
+        print('Activity {act} starts at {start} with lst {lst}'.format(act=act[0], start=start, lst=lst[int(act[0])]))
+
+print('\nTotal duration:' + str(instance.OBJ()))
+print('Total free slack over {activities} activities: {slack}'.format(activities=str(num_activities), slack=str(total_free_slack)))
 '''
