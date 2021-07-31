@@ -12,6 +12,10 @@ This is a minimax formulation that aims to minimize the worst case makespan.
 Activity durations lie within a budgeted uncertainty set.
 Number of activities that can attain their worst case values are controlled 
 by parameter GAMMA. Worst case deviation is controlled by parameter THETA.
+
+Based on the formulation of Georgios M. Kopanos, Thomas S. Kyriakidis, Michael C. Georgiadis,
+New continuous-time and discrete-time mathematical formulations for resource-constrained project scheduling problems
+Computers and Chemical Engineering 68 (2014) 96–106
 '''
 model = AbstractModel(name="RCPSP_CONTINUOUS_ROBUST")
 
@@ -125,7 +129,7 @@ Precedence constraints for activities that can't overlap
 
 If i is scheduled before j (xij = 1 -> xji = 0) then i must finish before j starts (fin[i] <= start[j])
 because there are not enough resources for them to overlap. If j is scheduled before i (xji = 1)
-then the constraint is skipped because fin[i] - start[j] <= lft[i] - est[j] always holds
+then the constraint is skipped because fin[i] - start[j] <= upper_bound always holds
 '''
 def activity_non_overlapping_precedence(sub_m, i, j):
     M = sub_m.model()
@@ -139,7 +143,7 @@ Precedence constraints for activities that can overlap
 
 If i is scheduled before j (xij = 1 -> xji = 0) then i must start before j starts (start[i] <= start[j])
 as dictated by the decision variables. If j is scheduled before i (xji = 1) then the constraint is skipped 
-because start[i] - start[j] <= lst[i] - est[j] always holds
+because start[i] - start[j] <= upper_bound always holds
 '''
 def activity_overlapping_precedence_1(sub_m, i, j):
     M = sub_m.model()
@@ -177,7 +181,7 @@ model.inner.no_execution_cycles_constraint = Constraint(
 '''
 Define overlapping decision variables.
 If z[i, j] is 0 then i and j are not overlapping meaning that i finishes before j starts.
-If z[i, j] is 1 then the constraint is skipped because fin[i] - start[j] <= lft[i] - est[j] always holds
+If z[i, j] is 1 then the constraint is skipped because fin[i] - start[j] <= upper_bound always holds
 '''
 def overlapping_variables(sub_m, i, j):
     M = sub_m.model()

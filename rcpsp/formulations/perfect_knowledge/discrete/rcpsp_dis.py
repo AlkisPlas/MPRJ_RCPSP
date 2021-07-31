@@ -2,8 +2,11 @@ from pyomo.environ import *
 
 '''
 Binary Integer Programming formulation for the RCPSP.
-Time horizon is divided into discrete intervals.
-Deterministic activity durations
+Time horizon is divided into discrete intervals. Deterministic activity durations
+
+Based on the formulation of Aristide Mingozzi, Vittorio Maniezzo, Salvatore Ricciardelli, Lucio Bianco, (1998) 
+An Exact Algorithm for the Resource-Constrained Project Scheduling Problem Based on a New Mathematical Formulation. 
+Management Science 44(5):714-729.
 '''
 model = AbstractModel(name="RCPSP_DISCRETE")
 

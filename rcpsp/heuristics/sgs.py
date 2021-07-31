@@ -1,7 +1,7 @@
 from pkg_resources import safe_version
 import random
 
-def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
+def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft, use_pr=False):
     
     eft = {}    
     fin = {}
@@ -24,8 +24,12 @@ def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
 
         while eligible_activities:
             
-            j = eligible_activities.pop(0)
-            #j = min(pr, key=pr.get)
+            if use_pr:
+                j = min(pr, key=pr.get)
+                eligible_activities.remove(j)
+            else:
+                j = eligible_activities.pop(0)
+            
             eft[j] = max((fin[pre] for pre in preds[j]), default=0) + p[j]
 
             eligible_times = []
@@ -47,7 +51,7 @@ def serial_schedule_generation(n, p, preds, r_count, r_cons, r_cap, lft):
                 scheduled.append(j)
                 break
             
-    print('SGS upper bound:' + str(fin[n+1]))
+    #print('SGS upper bound:' + str(fin[n+1]))
     return fin[n + 1]
 
 

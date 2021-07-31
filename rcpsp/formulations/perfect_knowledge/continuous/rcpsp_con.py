@@ -1,8 +1,12 @@
 from pyomo.environ import *
 
 '''
-Mixed-Integer linear formulation for the RCPSP.
+Mixed-Integer programming formulation for the RCPSP.
 Continuous time horizon. Deterministic activity durations.
+
+Based on the formulation of Georgios M. Kopanos, Thomas S. Kyriakidis, Michael C. Georgiadis,
+New continuous-time and discrete-time mathematical formulations for resource-constrained project scheduling problems
+Computers and Chemical Engineering 68 (2014) 96–106
 '''
 model = AbstractModel(name="RCPSP_CONTINUOUS")
 
