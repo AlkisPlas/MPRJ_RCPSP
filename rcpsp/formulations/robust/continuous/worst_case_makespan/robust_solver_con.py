@@ -1,21 +1,34 @@
-import sys
+import argparse
+import json
+import math
 from datetime import datetime
-from pyomo.core.base.component import CloneError
+
 import pyomo.dataportal as dp
 import pyomo.environ as pyo
-import robust_rcpsp_con as rcpsp
-from rcpsp.heuristics.sgs import serial_schedule_generation
-from rcpsp.heuristics.forward_recursion import get_earliest_times
+from pyomo.core.base.component import CloneError
 from rcpsp.heuristics.backward_recursion import BackwardRecursion
+from rcpsp.heuristics.forward_recursion import get_earliest_times
+from rcpsp.heuristics.sgs import serial_schedule_generation
+
+import robust_rcpsp_con as rcpsp
+
+# Metasolvers are here
+# import pyomo.bilevel.plugins
+
+parser = argparse.ArgumentParser()
+parser.add_argument("dir") 
+parser.add_argument("instance")
+parser.add_argument("-theta", "--theta", type=float, default=0.0) 
+parser.add_argument("-gamma", "--gamma", type=float, default=0.0) 
+parser.add_argument("-p", "--perturb", action="store_true", default=False) 
+parser.add_argument("-d", "--display", action="store_true", default=False) 
+parser.add_argument("-s", "--store", action="store_true", default=False) 
+args = parser.parse_args()
+
+instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=args.dir)
+instance_name = args.instance
 
 data = dp.DataPortal()
-
-instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=sys.argv[1])
-instance_name = sys.argv[2]
-
-#instance_dir = 'data/test_data/'
-#instance_name = 'rcpsp_test_instance_1'
-
 data.load(filename=instance_dir + instance_name + '.json')
 
 act_count = data['act_count']
@@ -26,11 +39,11 @@ r_cons = data['r_cons']
 r_cap = data['r_cap']
 
 # Worst case duration factor
-THETA = int(sys.argv[3]) if len(sys.argv) >= 4 else 0.5
+THETA = args.theta
 data['THETA'] = {None: THETA}
 
 # Uncertainty budget
-GAMMA = int(sys.argv[4]) if len(sys.argv) >= 5 else act_count / 2
+GAMMA = args.gamma
 data['GAMMA'] = {None: GAMMA}
 
 print('\nSolving instance: {instance}. Using GAMMA={GAMMA}, THETA={THETA}'.format(instance=instance_name, GAMMA=GAMMA,THETA=THETA))
@@ -93,12 +106,7 @@ for i, j in B:
         if r_cons[i, k] + r_cons[j, k] > r_cap[k]:
             G.update([(i, j)])
             break
-'''
-TODO - find how to populate this
-for i, j in C:
-    if (i, j) not in C and lft[i] <= est[j]:
-        D.update([(i, j)])
-'''
+
 
 # Activities sharing at least one resource
 data['B'] = B
@@ -116,7 +124,6 @@ data['P'] = B.difference(G.union(K))
 
 print('Preprocessing phase complete. Sending to solver...')
 instance = rcpsp.model.create_instance(data)
-#instance.pprint()
 
 ''' 
 Apply the bilevel linear duality metasolver.
@@ -128,10 +135,22 @@ opt = pyo.SolverFactory('bilevel_ld')
 opt.options['solver'] = 'cplex'
 
 results = opt.solve(instance, load_solutions=True)
-#instance.delta.display()
-#instance.inner.fin.display()
 
-results.write(filename='data/results/robust/continuous/{instance_dir}/{instance_name}_results_{timestamp}.json'
-              .format(instance_dir=sys.argv[1], instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
+if args.store:
+    # Get the inner solver results from the temp file.
+    with open("data/results/robust/continuous/worst_case_makespan/inner_results.json", "r") as jsonFile:
+        data = json.load(jsonFile)
+
+    # Set the inner only time to the total time 
+    data['Solver'][0]['User time'] = results.solver.wallclock_time
+
+    # Dump to the correct directory
+    with open('data/results/robust/continuous/worst_case_makespan/{instance_dir}/{instance_name}_results_{timestamp}.json'
+                .format(instance_dir=args.dir, instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), "w") as jsonFile:
+        json.dump(data,jsonFile, indent=4)
+
+if args.display:
+    instance.inner.fin.display()
 
 print('Worst case makespan:' + str(instance.inner.OBJ()))
+#print(round(instance.inner.OBJ()))

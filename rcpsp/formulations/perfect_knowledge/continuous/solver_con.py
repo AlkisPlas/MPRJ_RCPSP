@@ -1,28 +1,47 @@
-import sys
+import argparse
+import math
+import random
 from datetime import datetime
-from pyomo.core.base.component import CloneError
+
 import pyomo.dataportal as dp
 import pyomo.environ as pyo
-import rcpsp_con as rcpsp
-from rcpsp.heuristics.sgs import serial_schedule_generation
-from rcpsp.heuristics.forward_recursion import get_earliest_times
+from pyomo.core.base.component import CloneError
 from rcpsp.heuristics.backward_recursion import BackwardRecursion
+from rcpsp.heuristics.forward_recursion import get_earliest_times
+from rcpsp.heuristics.sgs import serial_schedule_generation
 
-data = dp.DataPortal()
+import rcpsp_con as rcpsp
 
-instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=sys.argv[1])
-instance_name = sys.argv[2]
+parser = argparse.ArgumentParser()
+parser.add_argument("dir") 
+parser.add_argument("instance")  
+parser.add_argument("-p", "--perturb", action="store_true", default=False) 
+parser.add_argument("-d", "--display", action="store_true", default=False) 
+parser.add_argument("-s", "--store", action="store_true", default=False) 
+args = parser.parse_args()
+
+instance_dir = 'data/instances/json/{instance_dir}/'.format(instance_dir=args.dir)
+instance_name = args.instance
 
 print('\nSolving instance:' + instance_name)
 
+data = dp.DataPortal()
 data.load(filename=instance_dir + instance_name + '.json')
 
 act_count = data['act_count']
-act_proc = data['act_proc']
-act_pre = data['act_pre']
+act_pre = data['act_pre']    
 r_count = data['r_count']
 r_cons = data['r_cons']
 r_cap = data['r_cap']
+
+# Perturb instance. Worst case scenario is nominal * 1.5
+act_proc = {}
+if args.perturb:
+    for act in data['act_proc']:
+        act_proc[act] = math.floor(data['act_proc'][act] * (1 + random.randint(0, 50) / 100))
+    data['act_proc'] = act_proc
+else:
+    act_proc = data['act_proc']
 
 # Initialize dummy source and sink activities
 source = 0
@@ -103,19 +122,19 @@ data['P'] = B.difference(G.union(K))
 
 print('Preprocessing phase complete. Sending to solver...')
 instance = rcpsp.model.create_instance(data)
-#instance.pprint()
 
 # Solve instance and print results
 opt = pyo.SolverFactory('cplex')
 opt.options['threads'] = 2
 opt.options['timelimit'] = 20 * 60
-#opt.options['mipgap'] = 0.05
+
 results = opt.solve(instance, load_solutions=True)
 
+if args.store:
+    results.write(filename='data/results/perfect_knowledge/continuous/{instance_dir}/{instance_name}_results_{timestamp}.json'
+              .format(instance_dir=args.dir, instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
 
-results.write(filename='data/results/continuous/{instance_dir}/{instance_name}_results_{timestamp}.json'
-              .format(instance_dir=sys.argv[1], instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
+if args.display:
+    instance.fin.display()
 
-print('Done')
-
-#instance.display()
+print(round(instance.OBJ()))

@@ -77,7 +77,7 @@ opt.options['timelimit'] = 20 * 60
 results = opt.solve(instance, load_solutions=True)
 
 
-results.write(filename='data/results/discrete/{instance_dir}/{instance_name}_results_{timestamp}.json'
+results.write(filename='data/results/perfect_knowledge/discrete/{instance_dir}/{instance_name}_results_{timestamp}.json'
               .format(instance_dir=sys.argv[1], instance_name=instance_name, timestamp=datetime.now().strftime("%d_%m_%Y_%H_%M_%S")), format='json')
 
 print('Done\n')

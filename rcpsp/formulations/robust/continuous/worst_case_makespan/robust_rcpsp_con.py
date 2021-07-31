@@ -218,8 +218,5 @@ def finish_time_objective_inner(sub_m):
 
 model.inner.OBJ = Objective(rule=finish_time_objective_inner, sense=minimize)
 
-# Adversarial Outer level Objective - Worst case makespan 
-def finish_time_objective_outer(m):
-    return m.inner.fin[value(m.act_count) + 1]
-    
-model.OBJ = Objective(rule=finish_time_objective_outer, sense=maximize)
+# Adversarial Outer level Objective - Worst case makespan     
+model.OBJ = Objective(expr=model.inner.OBJ, sense=maximize)
