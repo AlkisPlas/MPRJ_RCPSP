@@ -1,9 +1,19 @@
-# MPRJ_RCPSP
+## Mixed integer programming formulations for the robust resource constrained project scheduling problem. ##
 
-Formulations for the robust Resource-Constrained Project Scheduling Problem (RCPSP) using Pyomo modelling.
+This project investigates the impact of different formulations on the solution quality of the robust resource constraint project scheduling problem (RCPSP). 
+
+Two mixed-integer programming (MIP) formulations are presented under the assumption of deterministic activity processing times. The first separates the time horizon to discrete intervals ```rcpsp/formulations/perfect_knowledge/rcpsp_dis.py```. The second assumes a continuous horizon ```rcpsp/formulations/perfect_knowledge/rcpsp_con.py```.
+
+Following a minimax bilevel approach, we formulate the worst case makespan robust RCPSP ```rcpsp/formulations/robust/continuous/worst_case_makespan/robust_rcpsp_dis.py``` using the pyomo.bilevel package. The bilevel models are reformulated to each of the perfect-knowledge MIP formulations  and then solved using the CPLEX solver. 
+
+For every formulation we implement a pyomo abstract model and a corresponding solver class that instantiates the model, computes a warm start solution using a serial schedule generation scheme ```rcpsp/heuristics/sgs.py``` and invokes CPLEX using the SolverFactory wrapper.
+
+The models are executed on the PSPLIB instances found under ```data/instances/json```.
+
 
 The project is structured as follows.
 
+```bash
 .
 ├── README.md
 ├── data
@@ -52,3 +62,4 @@ The project is structured as follows.
         └── priority_rule_evaluation
             ├── run_pr.sh
             └── run_sgs.py
+```
