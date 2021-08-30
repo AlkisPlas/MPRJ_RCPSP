@@ -45,6 +45,8 @@ model.THETA = Param()
 model.GAMMA = Param()
 
 # Activity time windows
+model.est = Param(model.act_set, within=NonNegativeReals)
+model.eft = Param(model.act_set, within=NonNegativeReals)
 model.lst = Param(model.act_set, within=NonNegativeReals)
 model.lft = Param(model.act_set, within=NonNegativeReals)
 model.upper_bound = Param(within=NonNegativeIntegers)
@@ -133,7 +135,7 @@ then the constraint is skipped because fin[i] - start[j] <= upper_bound always h
 '''
 def activity_non_overlapping_precedence(sub_m, i, j):
     M = sub_m.model()
-    return sub_m.fin[i] <= sub_m.start[j] + (M.upper_bound) * sub_m.x[j, i]
+    return sub_m.fin[i] <= sub_m.start[j] + (M.lft[i] - M.est[j]) * sub_m.x[j, i]
         
 model.inner.activity_non_overlapping_precedence_constraint = Constraint(
     model.S, rule=activity_non_overlapping_precedence)
@@ -148,7 +150,7 @@ because start[i] - start[j] <= upper_bound always holds
 def activity_overlapping_precedence_1(sub_m, i, j):
     M = sub_m.model()
     if i > j:
-        return sub_m.start[j] <= sub_m.start[i] + (M.upper_bound) * sub_m.x[i, j]
+        return sub_m.start[j] <= sub_m.start[i] + (M.lst[j] - M.est[i]) * sub_m.x[i, j]
 
     return Constraint.Skip
 
@@ -159,7 +161,7 @@ model.inner.activity_overlapping_precedence_constraint_1 = Constraint(
 def activity_overlapping_precedence_2(sub_m, i, j):
     M = sub_m.model()
     if i > j:
-        return sub_m.start[i] + 0.1 <= sub_m.start[j] + (M.upper_bound + 0.1) * sub_m.x[j, i]
+        return sub_m.start[i] + 0.1 <= sub_m.start[j] + (M.lst[i] - M.est[j] + 0.1) * sub_m.x[j, i]
 
     return Constraint.Skip
 
@@ -185,7 +187,7 @@ If z[i, j] is 1 then the constraint is skipped because fin[i] - start[j] <= uppe
 '''
 def overlapping_variables(sub_m, i, j):
     M = sub_m.model()
-    return sub_m.fin[i] <= sub_m.start[j] + (M.upper_bound) * sub_m.z[i, j]
+    return sub_m.fin[i] <= sub_m.start[j] + (M.lft[i] - M.est[j]) * sub_m.z[i, j]
 
 model.inner.overlapping_variables_constraint = Constraint(
     model.P, rule=overlapping_variables)
