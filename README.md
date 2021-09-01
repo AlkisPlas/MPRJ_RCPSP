@@ -2,9 +2,9 @@
 
 This project investigates the impact of different formulations on the solution quality of the robust resource constraint project scheduling problem (RCPSP). 
 
-Two mixed-integer programming (MIP) formulations are presented under the assumption of deterministic activity processing times. The first separates the time horizon to discrete intervals ```rcpsp/formulations/perfect_knowledge/rcpsp_dis.py```. The second assumes a continuous horizon ```rcpsp/formulations/perfect_knowledge/rcpsp_con.py```.
+Two mixed-integer programming (MIP) formulations are presented under the assumption of deterministic activity processing times. These are found under the ```rcpsp/formulations/perfect_knowledge``` directory. <br/>```rcpsp_dis.py``` separates the time horizon to discrete intervals while ```rcpsp_con.py``` assumes a continuous horizon .
 
-Following a minimax bilevel approach, we formulate the worst case makespan robust RCPSP ```rcpsp/formulations/robust/continuous/worst_case_makespan/robust_rcpsp_dis.py``` using the pyomo.bilevel package. The bilevel models are reformulated to each of the perfect-knowledge MIP formulations  and then solved using the CPLEX solver. 
+Following a minimax bilevel approach, we formulate the worst case makespan robust RCPSP using the pyomo.bilevel package. The bilevel models are reformulated to each of the perfect-knowledge MIP formulations  and then solved using the CPLEX solver. These can be found under the ```rcpsp/formulations/robust``` directory.
 
 For every formulation we implement a pyomo abstract model and a corresponding solver class that instantiates the model, computes a warm start solution using a serial schedule generation scheme ```rcpsp/heuristics/sgs.py``` and invokes CPLEX using the SolverFactory wrapper.
 
