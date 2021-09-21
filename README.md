@@ -1,6 +1,6 @@
 ## Mixed integer programming formulations for the robust resource constrained project scheduling problem. ##
 
-This project investigates the impact of different formulations on the solution quality of the robust resource constraint project scheduling problem (RCPSP). 
+This project investigates the impact of different formulations on the solution quality of the robust resource constrained project scheduling problem (RCPSP). 
 
 Two mixed-integer programming (MIP) formulations are presented under the assumption of deterministic activity processing times. These are found under the ```rcpsp/formulations/perfect_knowledge``` directory. <br/>```rcpsp_dis.py``` separates the time horizon to discrete intervals while ```rcpsp_con.py``` assumes a continuous horizon .
 
